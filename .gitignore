@@ -1,0 +1,15 @@
+# 文件
+# .gitignore
+.xdchelp
+
+# 目录
+.metadata/
+dvt/
+.launches/
+.settings/
+.config/
+BIOS/
+Debug/
+Release/
+
+# 额外

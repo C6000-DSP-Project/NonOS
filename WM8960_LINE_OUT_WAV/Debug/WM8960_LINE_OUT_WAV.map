@@ -1,0 +1,771 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Fri Apr  1 15:21:02 2022
+
+OUTPUT FILE NAME:   <WM8960_LINE_OUT_WAV.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: c0000000
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  SYSCFG0               01c14000   00001000  00000000  00001000  RWIX
+  McBSP1                01d11000   00000800  00000000  00000800  RWIX
+  uPP                   01e16000   00001000  00000000  00001000  RWIX
+  GPIO                  01e26000   00001000  00000000  00001000  RWIX
+  SHDSPL2ROM            11700000   00100000  00000000  00100000  RWIX
+  SHDSPL2RAM            11800000   00040000  00000000  00040000  RWIX
+  SHDSPL1PRAM           11e00000   00008000  00000000  00008000  RWIX
+  SHDSPL1DRAM           11f00000   00008000  00000000  00008000  RWIX
+  EMIFACS0              40000000   20000000  00000000  20000000  RWIX
+  EMIFACS2              60000000   02000000  00000000  02000000  RWIX
+  EMIFACS3              62000000   02000000  00000000  02000000  RWIX
+  EMIFACS4              64000000   02000000  00000000  02000000  RWIX
+  EMIFACS5              66000000   02000000  00000000  02000000  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  EntryPoint            c0000000   00000800  000000a0  00000760  RWIX
+  Vector                c0000800   00000800  00000000  00000800  RWIX
+  DDR2                  c0001000   08000000  03208cba  04df7346  RWIX
+  ARMROM                fffd0000   00010000  00000000  00010000  RWIX
+  ARMRAM                ffff0000   00002000  00000000  00002000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+c0000000    c0000000    000000a0   000000a0    r-x
+  c0000000    c0000000    000000a0   000000a0    r-x .text:_c_int00
+c0001000    c0001000    032002aa   00000000    rw-
+  c0001000    c0001000    032002aa   00000000    rw- .far
+c32012ac    c32012ac    0000009c   00000098    r--
+  c32012ac    c32012ac    00000074   00000074    r-- .const
+  c3201320    c3201320    00000024   00000024    r-- .switch
+  c3201344    c3201344    00000004   00000000    r-- .rodata
+c3201348    c3201348    00000024   00000000    rw-
+  c3201348    c3201348    00000018   00000000    rw- .bss
+  c3201360    c3201360    0000000c   00000000    rw- .fardata
+c3201370    c3201370    00000070   00000070    r--
+  c3201370    c3201370    00000070   00000070    r-- .cinit
+c3201400    c3201400    000078e0   000078e0    r-x
+  c3201400    c3201400    000078e0   000078e0    r-x .text
+c3208ce0    c3208ce0    00001000   00000000    rw-
+  c3208ce0    c3208ce0    00001000   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text:_c_int00 
+*          0    c0000000    000000a0     
+                  c0000000    00000080     rts6740_elf.lib : boot.c.obj (.text:_c_int00)
+                  c0000080    00000010                     : pre_init.c.obj ($Tramp$S$$_system_pre_init)
+                  c0000090    00000010                     : autoinit.c.obj ($Tramp$S$$__TI_auto_init_nobinit_nopinit)
+
+.text      0    c3201400    000078e0     
+                  c3201400    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  c3202ea0    000017a0     drivers.lib : edma.obj (.text)
+                  c3204640    000010c0                 : mcasp.obj (.text)
+                  c3205700    00000b60     utils.lib : uartStdio.obj (.text)
+                  c3206260    00000620     main.obj (.text)
+                  c3206880    000005e0     system_config.lib : interrupt.obj (.text)
+                  c3206e60    00000580     drivers.lib : uart.obj (.text)
+                  c32073e0    000004c0                 : i2c.obj (.text)
+                  c32078a0    00000400     McASPInit.obj (.text)
+                  c3207ca0    00000340     I2C.obj (.text)
+                  c3207fe0    00000020     Platform.lib : EDMA.obj (.text)
+                  c3208000    00000200     system_config.lib : intvecs.obj (.text)
+                  c3208200    00000140     Platform.lib : UARTConsole.obj (.text)
+                  c3208340    00000140     WM8960Init.obj (.text)
+                  c3208480    00000140     drivers.lib : psc.obj (.text)
+                  c32085c0    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  c32086c0    000000e0                     : exit.c.obj (.text:exit)
+                  c32087a0    000000e0                     : memset.c.obj (.text:memset)
+                  c3208880    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  c3208940    000000c0                     : divu.asm.obj (.text:__divu)
+                  c3208a00    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  c3208ac0    000000a0                     : remu.asm.obj (.text:__remu)
+                  c3208b60    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  c3208c00    00000040                     : args_main.c.obj (.text:_args_main)
+                  c3208c40    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  c3208c60    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  c3208c80    00000020                     : exit.c.obj (.text:abort)
+                  c3208ca0    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  c3208cc0    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    c3208ce0    00001000     UNINITIALIZED
+                  c3208ce0    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  c3208ce8    00000ff8     --HOLE--
+
+.const     0    c32012ac    00000074     
+                  c32012ac    00000058     main.obj (.const:.string)
+                  c3201304    0000001c     utils.lib : uartStdio.obj (.const:.string)
+
+.switch    0    c3201320    00000024     
+                  c3201320    00000024     utils.lib : uartStdio.obj (.switch:UARTprintf)
+
+.far       0    c0001000    032002aa     UNINITIALIZED
+                  c0001000    03200000     (.common:wav_sound)
+                  c3201000    00000240     system_config.lib : interrupt.obj (.far)
+                  c3201240    00000060     main.obj (.far:dmaPar$1)
+                  c32012a0    0000000a     (.common:I2CData)
+
+.cinit     0    c3201370    00000070     
+                  c3201370    00000022     (.cinit..far.load) [load image, compression = rle]
+                  c3201392    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  c320139f    0000000a     (.cinit..rodata.load) [load image, compression = rle]
+                  c32013a9    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  c32013b2    00000002     --HOLE-- [fill = 0]
+                  c32013b4    00000008     (__TI_handler_table)
+                  c32013bc    00000004     --HOLE-- [fill = 0]
+                  c32013c0    00000020     (__TI_cinit_table)
+
+.init_array 
+*          0    c0001000    00000000     UNINITIALIZED
+
+.fardata   0    c3201360    0000000c     UNINITIALIZED
+                  c3201360    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+.neardata 
+*          0    c3201344    00000000     UNINITIALIZED
+
+.rodata    0    c3201344    00000004     UNINITIALIZED
+                  c3201344    00000004     utils.lib : uartStdio.obj (.rodata)
+
+.bss       0    c3201348    00000018     UNINITIALIZED
+                  c3201348    00000004     drivers.lib : edma.obj (.bss)
+                  c320134c    00000004     (.common:channel_num)
+                  c3201350    00000004     (.common:data_length)
+                  c3201354    00000004     (.common:data_start)
+                  c3201358    00000004     (.common:sample_rate)
+                  c320135c    00000004     (.common:slot_size)
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data 
+       ------                       ----    -------   ------- 
+    .\
+       main.obj                     1568    88        52428916
+       McASPInit.obj                1024    0         0       
+       I2C.obj                      832     0         10      
+       WM8960Init.obj               320     0         0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       3744    88        52428926
+                                                              
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       edma.obj                     6048    0         4       
+       mcasp.obj                    4288    0         0       
+       uart.obj                     1408    0         0       
+       i2c.obj                      1216    0         0       
+       psc.obj                      320     0         0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       13280   0         4       
+                                                              
+    ../../Library/StarterWare/Platform/Debug/Platform.lib
+       UARTConsole.obj              320     0         0       
+       EDMA.obj                     32      0         0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       352     0         0       
+                                                              
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576     
+       intvecs.obj                  512     0         0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       8832    0         576     
+                                                              
+    ../../Library/StarterWare/utils/Debug/utils.lib
+       uartStdio.obj                2912    68        0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       2912    68        0       
+                                                              
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288     0         0       
+       exit.c.obj                   256     0         12      
+       memset.c.obj                 224     0         0       
+       autoinit.c.obj               208     0         0       
+       divu.asm.obj                 192     0         0       
+       tls.c.obj                    192     0         0       
+       memcpy64.asm.obj             160     0         0       
+       remu.asm.obj                 160     0         0       
+       boot.c.obj                   128     0         0       
+       args_main.c.obj              64      0         0       
+       pre_init.c.obj               48      0         0       
+       copy_decompress_none.c.obj   32      0         0       
+       startup.c.obj                32      0         0       
+    +--+----------------------------+-------+---------+----------+
+       Total:                       1984    0         12      
+                                                              
+       Stack:                       0       0         4096    
+       Linker Generated:            0       106       0       
+    +--+----------------------------+-------+---------+----------+
+       Grand Total:                 31104   262       52433614
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ c32013c0 records: 4, size/record: 8, table size: 32
+	.far: load addr=c3201370, load size=00000022 bytes, run addr=c0001000, run size=032002aa bytes, compression=rle
+	.fardata: load addr=c3201392, load size=0000000d bytes, run addr=c3201360, run size=0000000c bytes, compression=rle
+	.rodata: load addr=c320139f, load size=0000000a bytes, run addr=c3201344, run size=00000004 bytes, compression=rle
+	.bss: load addr=c32013a9, load size=00000009 bytes, run addr=c3201348, run size=00000018 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ c32013b4 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+$.text:_system_pre_init:rts6740_elf.lib<pre_init.c.obj>$0x0  $Tramp$S$$_system_pre_init
+   c3208c60     c0000080     c0000020   rts6740_elf.lib : boot.c.obj (.text:_c_int00)
+$.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit:rts6740_elf.lib<autoinit.c.obj>$0x0  $Tramp$S$$__TI_auto_init_nobinit_nopinit
+   c3208880     c0000090     c0000030   rts6740_elf.lib : boot.c.obj (.text:_c_int00)
+
+[2 trampolines]
+[2 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+c3208c80  C$$EXIT                        
+c3203220  EDMA3ChannelToParamMap         
+c3203fc0  EDMA3ClearErrorBits            
+c32035c0  EDMA3ClrCCErr                  
+c3203664  EDMA3ClrEvt                    
+c3203a58  EDMA3ClrIntr                   
+c32034b4  EDMA3ClrMissEvt                
+c3204454  EDMA3ContextRestore            
+c3204278  EDMA3ContextSave               
+c3204158  EDMA3Deinit                    
+c320315c  EDMA3DisableChInShadowReg      
+c3203770  EDMA3DisableDmaEvt             
+c32039d0  EDMA3DisableEvtIntr            
+c3203828  EDMA3DisableQdmaEvt            
+c3203f30  EDMA3DisableTransfer           
+c3203094  EDMA3EnableChInShadowReg       
+c32036e8  EDMA3EnableDmaEvt              
+c3203948  EDMA3EnableEvtIntr             
+c32037f4  EDMA3EnableQdmaEvt             
+c3203ea8  EDMA3EnableTransfer            
+c3203900  EDMA3ErrIntrHighStatusGet      
+c3203e08  EDMA3FreeChannel               
+c3203858  EDMA3GetCCErrStatus            
+c32038d8  EDMA3GetErrIntrStatus          
+c3203880  EDMA3GetIntrStatus             
+c3203ac4  EDMA3GetPaRAM                  
+c3202ea0  EDMA3Init                      
+c32038ac  EDMA3IntrStatusHighGet         
+c3203244  EDMA3MapChToEvtQ               
+c320338c  EDMA3MapQdmaChToPaRAM          
+c3203080  EDMA3PeripheralIdGet           
+c3203568  EDMA3QdmaClrMissEvt            
+c3203924  EDMA3QdmaGetErrIntrStatus      
+c3203b20  EDMA3QdmaGetPaRAM              
+c3203c98  EDMA3QdmaGetPaRAMEntry         
+c3203bec  EDMA3QdmaSetPaRAM              
+c3203c58  EDMA3QdmaSetPaRAMEntry         
+c3203ce4  EDMA3RequestChannel            
+c32035e0  EDMA3SetEvt                    
+c3203b88  EDMA3SetPaRAM                  
+c3203478  EDMA3SetQdmaTrigWord           
+c3203308  EDMA3UnmapChToEvtQ             
+c3207fe0  EDMAVersionGet                 
+c3206cd8  ExcCombineAdd                  
+c3206d20  ExcCombineRemove               
+c3206cb8  ExcGlobalEnable                
+c3207864  I2CDMARxEventDisable           
+c3207818  I2CDMARxEventEnable            
+c3207840  I2CDMATxEventDisable           
+c32077f4  I2CDMATxEventEnable            
+c32077e0  I2CDMATxRxEventDisable         
+c32012a0  I2CData                        
+c3207f80  I2CInit                        
+c32077a8  I2CInterruptVectorGet          
+c3207608  I2CMasterBusBusy               
+c3207650  I2CMasterControl               
+c3207720  I2CMasterDataGet               
+c32076f8  I2CMasterDataPut               
+c32074b8  I2CMasterDisable               
+c3207480  I2CMasterEnable                
+c32076d0  I2CMasterErr                   
+c32073e0  I2CMasterInitExpClk            
+c32075c4  I2CMasterIntClearEx            
+c3207524  I2CMasterIntDisableEx          
+c32074d8  I2CMasterIntEnableEx           
+c320756c  I2CMasterIntStatus             
+c320762c  I2CMasterIsBusy                
+c32075f0  I2CMasterSlaveAddrSet          
+c3207678  I2CMasterStart                 
+c3207698  I2CMasterStop                  
+c3207790  I2COwnAddressSet               
+c3207dd0  I2CRcvBlocking                 
+c3207f04  I2CRegRead                     
+c3207ec4  I2CRegWrite                    
+c3207cec  I2CSendBlocking                
+c3207778  I2CSetDataCount                
+c32077c4  I2CSlaveAddressGet             
+c3207760  I2CSlaveDataGet                
+c3207738  I2CSlaveDataPut                
+c32075d8  I2CSlaveIntClearEx             
+c3207548  I2CSlaveIntDisableEx           
+c3207500  I2CSlaveIntEnableEx            
+c3207588  I2CSlaveIntStatus              
+c32075a4  I2CSlaveIntStatusEx            
+c32076b8  I2CStatusClear                 
+c3207bf0  I2SDataTxRxActivate            
+c32078b8  InputSample                    
+c3206880  IntDSPINTCInit                 
+c3206c30  IntDisable                     
+c3206c00  IntEnable                      
+c32069f8  IntEventClear                  
+c3206b34  IntEventCombineAdd             
+c3206a30  IntEventCombineInit            
+c3206bd8  IntEventCombineRegister        
+c3206b88  IntEventCombineRemove          
+c320693c  IntEventMap                    
+c32069c4  IntEventSet                    
+c3206c8c  IntGlobalDisable               
+c3206c78  IntGlobalEnable                
+c3206ca0  IntGlobalRestore               
+c32068f0  IntRegister                    
+c3206c64  IntReset                       
+c3206914  IntUnRegister                  
+c3204dc8  McASPAMUTEINActivate           
+c3204d18  McASPAMuteDisable              
+c3204cf0  McASPAMuteEnable               
+c32054cc  McASPContextRestore            
+c3205298  McASPContextSave               
+c3207b38  McASPI2SConfigure              
+c32078d0  McASPI2SRxConfigure            
+c3207a04  McASPI2STxConfigure            
+c3207bc4  McASPIntSetup                  
+c3204c88  McASPPinDirInputSet            
+c3204c58  McASPPinDirOutputSet           
+c3204c00  McASPPinGPIOSet                
+c3204c2c  McASPPinMcASPSet               
+c3206260  McASPPinMuxSetup               
+c32046b8  McASPReadFifoEnable            
+c3205218  McASPRxBufRead                 
+c320492c  McASPRxClkCfg                  
+c3204d84  McASPRxClkCheckConfig          
+c3204a18  McASPRxClkPolaritySet          
+c3205048  McASPRxClkStart                
+c3205188  McASPRxEnable                  
+c32047cc  McASPRxFmtI2SSet               
+c3204718  McASPRxFmtMaskSet              
+c3204754  McASPRxFmtSet                  
+c3204854  McASPRxFrameSyncCfg            
+c3204aa0  McASPRxHFClkPolaritySet        
+c3204e94  McASPRxIntDisable              
+c3204e40  McASPRxIntEnable               
+c3204658  McASPRxReset                   
+c3204f34  McASPRxSerActivate             
+c3205280  McASPRxStatusGet               
+c3204cd4  McASPRxTimeSlotSet             
+c3204bd0  McASPSerializerInactivate      
+c3204b78  McASPSerializerRxSet           
+c3204b24  McASPSerializerTxSet           
+c3205240  McASPTxBufWrite                
+c3204884  McASPTxClkCfg                  
+c3204d40  McASPTxClkCheckConfig          
+c32049d8  McASPTxClkPolaritySet          
+c3204f90  McASPTxClkStart                
+c32050d8  McASPTxEnable                  
+c3204770  McASPTxFmtI2SSet               
+c32046f8  McASPTxFmtMaskSet              
+c3204734  McASPTxFmtSet                  
+c3204824  McASPTxFrameSyncCfg            
+c3204a60  McASPTxHFClkPolaritySet        
+c3204e6c  McASPTxIntDisable              
+c3204e18  McASPTxIntEnable               
+c3204640  McASPTxReset                   
+c3204b04  McASPTxRxClkSyncDisable        
+c3204ae4  McASPTxRxClkSyncEnable         
+c3204ec4  McASPTxSerActivate             
+c3205264  McASPTxStatusGet               
+c3204cb4  McASPTxTimeSlotSet             
+c3204674  McASPWriteFifoEnable           
+c32078a0  OutputSample                   
+c3208480  PSCModuleControl               
+c32072c4  UARTBreakCtl                   
+c32071b4  UARTCharGet                    
+c3207188  UARTCharGetNonBlocking         
+c32071f0  UARTCharPut                    
+c3207148  UARTCharPutNonBlocking         
+c32070f8  UARTCharsAvail                 
+c3206ef4  UARTConfigGetExpClk            
+c3206e60  UARTConfigSetExpClk            
+c3208320  UARTConsoleGetc                
+c3208260  UARTConsoleInit                
+c32082f8  UARTConsolePutc                
+c3206fcc  UARTDMADisable                 
+c3206fac  UARTDMAEnable                  
+c3207074  UARTDisable                    
+c3207058  UARTEnable                     
+c32070b4  UARTFIFODisable                
+c32070a0  UARTFIFOEnable                 
+c3206f88  UARTFIFOLevelSet               
+c3205ab4  UARTGetHexNum                  
+c32059f4  UARTGetNum                     
+c3205d64  UARTGetc                       
+c32057a4  UARTGets                       
+c3207270  UARTIntDisable                 
+c3207248  UARTIntEnable                  
+c3207298  UARTIntStatus                  
+c3207350  UARTModemControlClear          
+c3207384  UARTModemControlGet            
+c32072f8  UARTModemControlSet            
+c32073a4  UARTModemStatusGet             
+c3207034  UARTParityModeGet              
+c3206fec  UARTParityModeSet              
+c3205904  UARTPutHexNum                  
+c3205840  UARTPutNum                     
+c3205d4c  UARTPutc                       
+c320570c  UARTPuts                       
+c3207128  UARTRxErrorGet                 
+c32070cc  UARTSpaceAvail                 
+c3205700  UARTStdioInit                  
+c3205dd4  UARTprintf                     
+c3205d70  UARTwrite                      
+c3208384  WM8960Init                     
+c3208340  WM8960WriteReg                 
+c32013c0  __TI_CINIT_Base                
+c32013e0  __TI_CINIT_Limit               
+c32013b4  __TI_Handler_Table_Base        
+c32013bc  __TI_Handler_Table_Limit       
+c3209ce0  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+c3201344  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+c3208880  __TI_auto_init_nobinit_nopinit 
+c3201360  __TI_cleanup_ptr               
+c3208ca0  __TI_decompress_none           
+c3208cc0  __TI_decompress_rle24          
+c3201364  __TI_dtors_ptr                 
+c3201368  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+c3208a00  __TI_tls_init                  
+ffffffff  __binit__                      
+c3208940  __c6xabi_divu                  
+c3208ac0  __c6xabi_remu                  
+ffffffff  __c_args__                     
+c3208940  __divu                         
+c3208ac0  __remu                         
+c3208c00  _args_main                     
+c32023f8  _c674x_mask_int10_isr          
+c32025c0  _c674x_mask_int11_isr          
+c3202784  _c674x_mask_int12_isr          
+c3202948  _c674x_mask_int13_isr          
+c3202b10  _c674x_mask_int14_isr          
+c3202cd8  _c674x_mask_int15_isr          
+c3201950  _c674x_mask_int4_isr           
+c3201b18  _c674x_mask_int5_isr           
+c3201ce0  _c674x_mask_int6_isr           
+c3201ea4  _c674x_mask_int7_isr           
+c3202068  _c674x_mask_int8_isr           
+c3202230  _c674x_mask_int9_isr           
+c3201400  _c674x_nmi_isr                 
+c32015c4  _c674x_rsvd_int2_isr           
+c3201788  _c674x_rsvd_int3_isr           
+c0000000  _c_int00                       
+c3208000  _intcVectorTable               
+c3208ce0  _stack                         
+c3208c40  _system_post_cinit             
+c3208c60  _system_pre_init               
+c3208c80  abort                          
+ffffffff  binit                          
+c320134c  channel_num                    
+c3201350  data_length                    
+c3201354  data_start                     
+c32086c0  exit                           
+c320666c  main                           
+c3208b60  memcpy                         
+c32087a0  memset                         
+c3201348  regionId                       
+c3201358  sample_rate                    
+c320135c  slot_size                      
+c0001000  wav_sound                      
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __TI_STACK_SIZE                
+c0000000  _c_int00                       
+c0001000  wav_sound                      
+c32012a0  I2CData                        
+c3201344  __TI_STATIC_BASE               
+c3201348  regionId                       
+c320134c  channel_num                    
+c3201350  data_length                    
+c3201354  data_start                     
+c3201358  sample_rate                    
+c320135c  slot_size                      
+c3201360  __TI_cleanup_ptr               
+c3201364  __TI_dtors_ptr                 
+c3201368  __TI_enable_exit_profile_output
+c32013b4  __TI_Handler_Table_Base        
+c32013bc  __TI_Handler_Table_Limit       
+c32013c0  __TI_CINIT_Base                
+c32013e0  __TI_CINIT_Limit               
+c3201400  _c674x_nmi_isr                 
+c32015c4  _c674x_rsvd_int2_isr           
+c3201788  _c674x_rsvd_int3_isr           
+c3201950  _c674x_mask_int4_isr           
+c3201b18  _c674x_mask_int5_isr           
+c3201ce0  _c674x_mask_int6_isr           
+c3201ea4  _c674x_mask_int7_isr           
+c3202068  _c674x_mask_int8_isr           
+c3202230  _c674x_mask_int9_isr           
+c32023f8  _c674x_mask_int10_isr          
+c32025c0  _c674x_mask_int11_isr          
+c3202784  _c674x_mask_int12_isr          
+c3202948  _c674x_mask_int13_isr          
+c3202b10  _c674x_mask_int14_isr          
+c3202cd8  _c674x_mask_int15_isr          
+c3202ea0  EDMA3Init                      
+c3203080  EDMA3PeripheralIdGet           
+c3203094  EDMA3EnableChInShadowReg       
+c320315c  EDMA3DisableChInShadowReg      
+c3203220  EDMA3ChannelToParamMap         
+c3203244  EDMA3MapChToEvtQ               
+c3203308  EDMA3UnmapChToEvtQ             
+c320338c  EDMA3MapQdmaChToPaRAM          
+c3203478  EDMA3SetQdmaTrigWord           
+c32034b4  EDMA3ClrMissEvt                
+c3203568  EDMA3QdmaClrMissEvt            
+c32035c0  EDMA3ClrCCErr                  
+c32035e0  EDMA3SetEvt                    
+c3203664  EDMA3ClrEvt                    
+c32036e8  EDMA3EnableDmaEvt              
+c3203770  EDMA3DisableDmaEvt             
+c32037f4  EDMA3EnableQdmaEvt             
+c3203828  EDMA3DisableQdmaEvt            
+c3203858  EDMA3GetCCErrStatus            
+c3203880  EDMA3GetIntrStatus             
+c32038ac  EDMA3IntrStatusHighGet         
+c32038d8  EDMA3GetErrIntrStatus          
+c3203900  EDMA3ErrIntrHighStatusGet      
+c3203924  EDMA3QdmaGetErrIntrStatus      
+c3203948  EDMA3EnableEvtIntr             
+c32039d0  EDMA3DisableEvtIntr            
+c3203a58  EDMA3ClrIntr                   
+c3203ac4  EDMA3GetPaRAM                  
+c3203b20  EDMA3QdmaGetPaRAM              
+c3203b88  EDMA3SetPaRAM                  
+c3203bec  EDMA3QdmaSetPaRAM              
+c3203c58  EDMA3QdmaSetPaRAMEntry         
+c3203c98  EDMA3QdmaGetPaRAMEntry         
+c3203ce4  EDMA3RequestChannel            
+c3203e08  EDMA3FreeChannel               
+c3203ea8  EDMA3EnableTransfer            
+c3203f30  EDMA3DisableTransfer           
+c3203fc0  EDMA3ClearErrorBits            
+c3204158  EDMA3Deinit                    
+c3204278  EDMA3ContextSave               
+c3204454  EDMA3ContextRestore            
+c3204640  McASPTxReset                   
+c3204658  McASPRxReset                   
+c3204674  McASPWriteFifoEnable           
+c32046b8  McASPReadFifoEnable            
+c32046f8  McASPTxFmtMaskSet              
+c3204718  McASPRxFmtMaskSet              
+c3204734  McASPTxFmtSet                  
+c3204754  McASPRxFmtSet                  
+c3204770  McASPTxFmtI2SSet               
+c32047cc  McASPRxFmtI2SSet               
+c3204824  McASPTxFrameSyncCfg            
+c3204854  McASPRxFrameSyncCfg            
+c3204884  McASPTxClkCfg                  
+c320492c  McASPRxClkCfg                  
+c32049d8  McASPTxClkPolaritySet          
+c3204a18  McASPRxClkPolaritySet          
+c3204a60  McASPTxHFClkPolaritySet        
+c3204aa0  McASPRxHFClkPolaritySet        
+c3204ae4  McASPTxRxClkSyncEnable         
+c3204b04  McASPTxRxClkSyncDisable        
+c3204b24  McASPSerializerTxSet           
+c3204b78  McASPSerializerRxSet           
+c3204bd0  McASPSerializerInactivate      
+c3204c00  McASPPinGPIOSet                
+c3204c2c  McASPPinMcASPSet               
+c3204c58  McASPPinDirOutputSet           
+c3204c88  McASPPinDirInputSet            
+c3204cb4  McASPTxTimeSlotSet             
+c3204cd4  McASPRxTimeSlotSet             
+c3204cf0  McASPAMuteEnable               
+c3204d18  McASPAMuteDisable              
+c3204d40  McASPTxClkCheckConfig          
+c3204d84  McASPRxClkCheckConfig          
+c3204dc8  McASPAMUTEINActivate           
+c3204e18  McASPTxIntEnable               
+c3204e40  McASPRxIntEnable               
+c3204e6c  McASPTxIntDisable              
+c3204e94  McASPRxIntDisable              
+c3204ec4  McASPTxSerActivate             
+c3204f34  McASPRxSerActivate             
+c3204f90  McASPTxClkStart                
+c3205048  McASPRxClkStart                
+c32050d8  McASPTxEnable                  
+c3205188  McASPRxEnable                  
+c3205218  McASPRxBufRead                 
+c3205240  McASPTxBufWrite                
+c3205264  McASPTxStatusGet               
+c3205280  McASPRxStatusGet               
+c3205298  McASPContextSave               
+c32054cc  McASPContextRestore            
+c3205700  UARTStdioInit                  
+c320570c  UARTPuts                       
+c32057a4  UARTGets                       
+c3205840  UARTPutNum                     
+c3205904  UARTPutHexNum                  
+c32059f4  UARTGetNum                     
+c3205ab4  UARTGetHexNum                  
+c3205d4c  UARTPutc                       
+c3205d64  UARTGetc                       
+c3205d70  UARTwrite                      
+c3205dd4  UARTprintf                     
+c3206260  McASPPinMuxSetup               
+c320666c  main                           
+c3206880  IntDSPINTCInit                 
+c32068f0  IntRegister                    
+c3206914  IntUnRegister                  
+c320693c  IntEventMap                    
+c32069c4  IntEventSet                    
+c32069f8  IntEventClear                  
+c3206a30  IntEventCombineInit            
+c3206b34  IntEventCombineAdd             
+c3206b88  IntEventCombineRemove          
+c3206bd8  IntEventCombineRegister        
+c3206c00  IntEnable                      
+c3206c30  IntDisable                     
+c3206c64  IntReset                       
+c3206c78  IntGlobalEnable                
+c3206c8c  IntGlobalDisable               
+c3206ca0  IntGlobalRestore               
+c3206cb8  ExcGlobalEnable                
+c3206cd8  ExcCombineAdd                  
+c3206d20  ExcCombineRemove               
+c3206e60  UARTConfigSetExpClk            
+c3206ef4  UARTConfigGetExpClk            
+c3206f88  UARTFIFOLevelSet               
+c3206fac  UARTDMAEnable                  
+c3206fcc  UARTDMADisable                 
+c3206fec  UARTParityModeSet              
+c3207034  UARTParityModeGet              
+c3207058  UARTEnable                     
+c3207074  UARTDisable                    
+c32070a0  UARTFIFOEnable                 
+c32070b4  UARTFIFODisable                
+c32070cc  UARTSpaceAvail                 
+c32070f8  UARTCharsAvail                 
+c3207128  UARTRxErrorGet                 
+c3207148  UARTCharPutNonBlocking         
+c3207188  UARTCharGetNonBlocking         
+c32071b4  UARTCharGet                    
+c32071f0  UARTCharPut                    
+c3207248  UARTIntEnable                  
+c3207270  UARTIntDisable                 
+c3207298  UARTIntStatus                  
+c32072c4  UARTBreakCtl                   
+c32072f8  UARTModemControlSet            
+c3207350  UARTModemControlClear          
+c3207384  UARTModemControlGet            
+c32073a4  UARTModemStatusGet             
+c32073e0  I2CMasterInitExpClk            
+c3207480  I2CMasterEnable                
+c32074b8  I2CMasterDisable               
+c32074d8  I2CMasterIntEnableEx           
+c3207500  I2CSlaveIntEnableEx            
+c3207524  I2CMasterIntDisableEx          
+c3207548  I2CSlaveIntDisableEx           
+c320756c  I2CMasterIntStatus             
+c3207588  I2CSlaveIntStatus              
+c32075a4  I2CSlaveIntStatusEx            
+c32075c4  I2CMasterIntClearEx            
+c32075d8  I2CSlaveIntClearEx             
+c32075f0  I2CMasterSlaveAddrSet          
+c3207608  I2CMasterBusBusy               
+c320762c  I2CMasterIsBusy                
+c3207650  I2CMasterControl               
+c3207678  I2CMasterStart                 
+c3207698  I2CMasterStop                  
+c32076b8  I2CStatusClear                 
+c32076d0  I2CMasterErr                   
+c32076f8  I2CMasterDataPut               
+c3207720  I2CMasterDataGet               
+c3207738  I2CSlaveDataPut                
+c3207760  I2CSlaveDataGet                
+c3207778  I2CSetDataCount                
+c3207790  I2COwnAddressSet               
+c32077a8  I2CInterruptVectorGet          
+c32077c4  I2CSlaveAddressGet             
+c32077e0  I2CDMATxRxEventDisable         
+c32077f4  I2CDMATxEventEnable            
+c3207818  I2CDMARxEventEnable            
+c3207840  I2CDMATxEventDisable           
+c3207864  I2CDMARxEventDisable           
+c32078a0  OutputSample                   
+c32078b8  InputSample                    
+c32078d0  McASPI2SRxConfigure            
+c3207a04  McASPI2STxConfigure            
+c3207b38  McASPI2SConfigure              
+c3207bc4  McASPIntSetup                  
+c3207bf0  I2SDataTxRxActivate            
+c3207cec  I2CSendBlocking                
+c3207dd0  I2CRcvBlocking                 
+c3207ec4  I2CRegWrite                    
+c3207f04  I2CRegRead                     
+c3207f80  I2CInit                        
+c3207fe0  EDMAVersionGet                 
+c3208000  _intcVectorTable               
+c3208260  UARTConsoleInit                
+c32082f8  UARTConsolePutc                
+c3208320  UARTConsoleGetc                
+c3208340  WM8960WriteReg                 
+c3208384  WM8960Init                     
+c3208480  PSCModuleControl               
+c32086c0  exit                           
+c32087a0  memset                         
+c3208880  __TI_auto_init_nobinit_nopinit 
+c3208940  __c6xabi_divu                  
+c3208940  __divu                         
+c3208a00  __TI_tls_init                  
+c3208ac0  __c6xabi_remu                  
+c3208ac0  __remu                         
+c3208b60  memcpy                         
+c3208c00  _args_main                     
+c3208c40  _system_post_cinit             
+c3208c60  _system_pre_init               
+c3208c80  C$$EXIT                        
+c3208c80  abort                          
+c3208ca0  __TI_decompress_none           
+c3208cc0  __TI_decompress_rle24          
+c3208ce0  _stack                         
+c3209ce0  __TI_STACK_END                 
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[261 symbols]
