@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_112" class="java.beans.XMLDecoder">
+ <object class="com.ti.dvt.ui.views.core.ImageProp">
+  <void property="delegateProp">
+   <object class="com.ti.dvt.ui.views.core.RGBProp">
+    <void property="blueMask">
+     <long>31</long>
+    </void>
+    <void property="greenMask">
+     <long>2016</long>
+    </void>
+    <void property="lineCount">
+     <int>480</int>
+    </void>
+    <void property="lineStride">
+     <int>1600</int>
+    </void>
+    <void property="pixelCountPerLine">
+     <int>800</int>
+    </void>
+    <void property="pixelStride">
+     <int>2</int>
+    </void>
+    <void property="readAs">
+     <int>16</int>
+    </void>
+    <void property="redMask">
+     <long>63488</long>
+    </void>
+    <void property="startAddress">
+     <string>g_pucBuffer[0] + 36</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
