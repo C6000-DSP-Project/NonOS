@@ -1,10 +1,10 @@
-/****************************************************************************/
-/*                                                                          */
-/*    新核科技(广州)有限公司                                                */
-/*                                                                          */
-/*    Copyright (C) 2022 CoreKernel Technology (Guangzhou) Co., Ltd         */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      新核科技(广州)有限公司
+//
+//      Copyright (C) 2022 CoreKernel Technology Guangzhou Co., Ltd
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 /*
  *    - 希望缄默(bin wang)
  *    - bin@corekernel.net
@@ -19,8 +19,8 @@
 #include "hw_mcasp.h"
 
 // DMA 模式选择
-#define MCASP_MODE_DMA			0
-#define MCASP_MODE_NON_DMA		1
+#define MCASP_MODE_DMA         0
+#define MCASP_MODE_NON_DMA     1
 
 // 发送接收模式选择
 #define MCASP_TX_MODE          0x01
