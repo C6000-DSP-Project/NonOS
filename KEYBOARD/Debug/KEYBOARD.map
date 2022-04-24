@@ -1,0 +1,332 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Sun Apr 24 11:58:39 2022
+
+OUTPUT FILE NAME:   <KEYBOARD.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 008032e0
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              00800000   00040000  000046dd  0003b923  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00800000    00800000    00003420   00003420    r-x
+  00800000    00800000    00003420   00003420    r-x .text
+00803420    00803420    00001240   00000000    rw-
+  00803420    00803420    00001000   00000000    rw- .stack
+  00804420    00804420    00000240   00000000    rw- .far
+00804660    00804660    00000030   00000030    r--
+  00804660    00804660    00000030   00000030    r-- .switch
+00804690    00804690    0000000d   00000000    rw-
+  00804690    00804690    0000000c   00000000    rw- .fardata
+  0080469c    0080469c    00000001   00000000    rw- .neardata
+008046a0    008046a0    00000040   00000040    r--
+  008046a0    008046a0    00000040   00000040    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    00800000    00003420     
+                  00800000    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  00801aa0    000005e0                       : interrupt.obj (.text)
+                  00802080    00000580     drivers.lib : gpio.obj (.text)
+                  00802600    000004a0     main.obj (.text)
+                  00802aa0    00000140     drivers.lib : psc.obj (.text)
+                  00802be0    00000020     rts6740_elf.lib : startup.c.obj (.text:_system_post_cinit)
+                  00802c00    00000200     system_config.lib : intvecs.obj (.text)
+                  00802e00    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  00802f00    000000e0                     : exit.c.obj (.text:exit)
+                  00802fe0    000000e0                     : memset.c.obj (.text:memset)
+                  008030c0    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00803180    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  00803240    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  008032e0    00000080                     : boot.c.obj (.text:_c_int00)
+                  00803360    00000040                     : args_main.c.obj (.text:_args_main)
+                  008033a0    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  008033c0    00000020                     : exit.c.obj (.text:abort)
+                  008033e0    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00803400    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    00803420    00001000     UNINITIALIZED
+                  00803420    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  00803428    00000ff8     --HOLE--
+
+.switch    0    00804660    00000030     
+                  00804660    00000020     main.obj (.switch:KEYNumIsr)
+                  00804680    00000010     drivers.lib : gpio.obj (.switch:GPIOIntTypeSet)
+
+.far       0    00804420    00000240     UNINITIALIZED
+                  00804420    00000240     system_config.lib : interrupt.obj (.far)
+
+.cinit     0    008046a0    00000040     
+                  008046a0    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  008046ad    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  008046b8    00000008     (__TI_handler_table)
+                  008046c0    00000007     (.cinit..neardata.load) [load image, compression = rle]
+                  008046c7    00000001     --HOLE-- [fill = 0]
+                  008046c8    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    00800000    00000000     UNINITIALIZED
+
+.fardata   0    00804690    0000000c     UNINITIALIZED
+                  00804690    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+.neardata 
+*          0    0080469c    00000001     UNINITIALIZED
+                  0080469c    00000001     main.obj (.neardata)
+
+.rodata    0    0080469d    00000000     UNINITIALIZED
+
+.bss       0    0080469d    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
+    .\
+       main.obj                     1184    32        1      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1184    32        1      
+                                                             
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       gpio.obj                     1408    16        0      
+       psc.obj                      320     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1728    16        0      
+                                                             
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576    
+       intvecs.obj                  512     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       8832    0         576    
+                                                             
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288     0         0      
+       exit.c.obj                   256     0         12     
+       memset.c.obj                 224     0         0      
+       autoinit.c.obj               192     0         0      
+       tls.c.obj                    192     0         0      
+       memcpy64.asm.obj             160     0         0      
+       boot.c.obj                   128     0         0      
+       args_main.c.obj              64      0         0      
+       copy_decompress_none.c.obj   32      0         0      
+       pre_init.c.obj               32      0         0      
+       startup.c.obj                32      0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1600    0         12     
+                                                             
+       Stack:                       0       0         4096   
+       Linker Generated:            0       63        0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 13344   111       4685   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 008046c8 records: 3, size/record: 8, table size: 24
+	.fardata: load addr=008046a0, load size=0000000d bytes, run addr=00804690, run size=0000000c bytes, compression=rle
+	.far: load addr=008046ad, load size=0000000b bytes, run addr=00804420, run size=00000240 bytes, compression=rle
+	.neardata: load addr=008046c0, load size=00000007 bytes, run addr=0080469c, run size=00000001 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 008046b8 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+008033c0  C$$EXIT                        
+00801ef8  ExcCombineAdd                  
+00801f40  ExcCombineRemove               
+00801ed8  ExcGlobalEnable                
+00802524  GPIOBankIntDisable             
+008024f4  GPIOBankIntEnable              
+00802550  GPIOBankPinsWrite              
+00802118  GPIODirModeGet                 
+00802080  GPIODirModeSet                 
+008023c4  GPIOIntTypeGet                 
+00802258  GPIOIntTypeSet                 
+008024ac  GPIOPinIntClear                
+0080244c  GPIOPinIntStatus               
+008021f8  GPIOPinRead                    
+00802178  GPIOPinWrite                   
+00801aa0  IntDSPINTCInit                 
+00801e50  IntDisable                     
+00801e20  IntEnable                      
+00801c18  IntEventClear                  
+00801d54  IntEventCombineAdd             
+00801c50  IntEventCombineInit            
+00801df8  IntEventCombineRegister        
+00801da8  IntEventCombineRemove          
+00801b5c  IntEventMap                    
+00801be4  IntEventSet                    
+00801eac  IntGlobalDisable               
+00801e98  IntGlobalEnable                
+00801ec0  IntGlobalRestore               
+00801b10  IntRegister                    
+00801e84  IntReset                       
+00801b34  IntUnRegister                  
+00802a08  InterruptInit                  
+008029a4  KEYFUNIsr                      
+0080469c  KEYNum                         
+00802800  KEYNumIsr                      
+00802aa0  PSCModuleControl               
+008046c8  __TI_CINIT_Base                
+008046e0  __TI_CINIT_Limit               
+008046b8  __TI_Handler_Table_Base        
+008046c0  __TI_Handler_Table_Limit       
+00804420  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+0080469c  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+008030c0  __TI_auto_init_nobinit_nopinit 
+00804690  __TI_cleanup_ptr               
+008033e0  __TI_decompress_none           
+00803400  __TI_decompress_rle24          
+00804694  __TI_dtors_ptr                 
+00804698  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00803180  __TI_tls_init                  
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+00803360  _args_main                     
+00800ff8  _c674x_mask_int10_isr          
+008011c0  _c674x_mask_int11_isr          
+00801384  _c674x_mask_int12_isr          
+00801548  _c674x_mask_int13_isr          
+00801710  _c674x_mask_int14_isr          
+008018d8  _c674x_mask_int15_isr          
+00800550  _c674x_mask_int4_isr           
+00800718  _c674x_mask_int5_isr           
+008008e0  _c674x_mask_int6_isr           
+00800aa4  _c674x_mask_int7_isr           
+00800c68  _c674x_mask_int8_isr           
+00800e30  _c674x_mask_int9_isr           
+00800000  _c674x_nmi_isr                 
+008001c4  _c674x_rsvd_int2_isr           
+00800388  _c674x_rsvd_int3_isr           
+008032e0  _c_int00                       
+00802c00  _intcVectorTable               
+00803420  _stack                         
+00802be0  _system_post_cinit             
+008033a0  _system_pre_init               
+008033c0  abort                          
+ffffffff  binit                          
+00802f00  exit                           
+00802a64  main                           
+00803240  memcpy                         
+00802fe0  memset                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __TI_STACK_SIZE                
+00800000  _c674x_nmi_isr                 
+008001c4  _c674x_rsvd_int2_isr           
+00800388  _c674x_rsvd_int3_isr           
+00800550  _c674x_mask_int4_isr           
+00800718  _c674x_mask_int5_isr           
+008008e0  _c674x_mask_int6_isr           
+00800aa4  _c674x_mask_int7_isr           
+00800c68  _c674x_mask_int8_isr           
+00800e30  _c674x_mask_int9_isr           
+00800ff8  _c674x_mask_int10_isr          
+008011c0  _c674x_mask_int11_isr          
+00801384  _c674x_mask_int12_isr          
+00801548  _c674x_mask_int13_isr          
+00801710  _c674x_mask_int14_isr          
+008018d8  _c674x_mask_int15_isr          
+00801aa0  IntDSPINTCInit                 
+00801b10  IntRegister                    
+00801b34  IntUnRegister                  
+00801b5c  IntEventMap                    
+00801be4  IntEventSet                    
+00801c18  IntEventClear                  
+00801c50  IntEventCombineInit            
+00801d54  IntEventCombineAdd             
+00801da8  IntEventCombineRemove          
+00801df8  IntEventCombineRegister        
+00801e20  IntEnable                      
+00801e50  IntDisable                     
+00801e84  IntReset                       
+00801e98  IntGlobalEnable                
+00801eac  IntGlobalDisable               
+00801ec0  IntGlobalRestore               
+00801ed8  ExcGlobalEnable                
+00801ef8  ExcCombineAdd                  
+00801f40  ExcCombineRemove               
+00802080  GPIODirModeSet                 
+00802118  GPIODirModeGet                 
+00802178  GPIOPinWrite                   
+008021f8  GPIOPinRead                    
+00802258  GPIOIntTypeSet                 
+008023c4  GPIOIntTypeGet                 
+0080244c  GPIOPinIntStatus               
+008024ac  GPIOPinIntClear                
+008024f4  GPIOBankIntEnable              
+00802524  GPIOBankIntDisable             
+00802550  GPIOBankPinsWrite              
+00802800  KEYNumIsr                      
+008029a4  KEYFUNIsr                      
+00802a08  InterruptInit                  
+00802a64  main                           
+00802aa0  PSCModuleControl               
+00802be0  _system_post_cinit             
+00802c00  _intcVectorTable               
+00802f00  exit                           
+00802fe0  memset                         
+008030c0  __TI_auto_init_nobinit_nopinit 
+00803180  __TI_tls_init                  
+00803240  memcpy                         
+008032e0  _c_int00                       
+00803360  _args_main                     
+008033a0  _system_pre_init               
+008033c0  C$$EXIT                        
+008033c0  abort                          
+008033e0  __TI_decompress_none           
+00803400  __TI_decompress_rle24          
+00803420  _stack                         
+00804420  __TI_STACK_END                 
+00804690  __TI_cleanup_ptr               
+00804694  __TI_dtors_ptr                 
+00804698  __TI_enable_exit_profile_output
+0080469c  KEYNum                         
+0080469c  __TI_STATIC_BASE               
+008046b8  __TI_Handler_Table_Base        
+008046c0  __TI_Handler_Table_Limit       
+008046c8  __TI_CINIT_Base                
+008046e0  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[84 symbols]

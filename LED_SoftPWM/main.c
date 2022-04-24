@@ -7,13 +7,13 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //
-//      GPIO LED
+//      GPIO LED 软件模拟 PWM
 //
 //      2022年04月24日
 //
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 /*
- *    核心板与底板 GPIO LED 闪烁
+ *    核心板 LED 呼吸灯
  *
  *    - 希望缄默(bin wang)
  *    - bin@corekernel.net
@@ -39,22 +39,9 @@ static void GPIOBankPinMuxSet()
 {
     // 配置相应的 GPIO 口功能为普通输入输出口
     // 核心板
-    // GPIO6[12]
-    HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(13)) = (HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(13)) & (~(SYSCFG_PINMUX13_PINMUX13_15_12))) |
-                                                    ((SYSCFG_PINMUX13_PINMUX13_15_12_GPIO6_12 << SYSCFG_PINMUX13_PINMUX13_15_12_SHIFT));
-
     // GPIO6[13]
     HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(13)) = (HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(13)) & (~(SYSCFG_PINMUX13_PINMUX13_11_8))) |
                                                     ((SYSCFG_PINMUX13_PINMUX13_11_8_GPIO6_13 << SYSCFG_PINMUX13_PINMUX13_11_8_SHIFT));
-
-    // 底板
-    // GPIO2[15]
-    HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(05)) = (HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(05)) & (~(SYSCFG_PINMUX5_PINMUX5_3_0))) |
-                                                    ((SYSCFG_PINMUX5_PINMUX5_3_0_GPIO2_15 << SYSCFG_PINMUX5_PINMUX5_3_0_SHIFT));
-
-    // GPIO4[00]
-    HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(10)) = (HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(10)) & (~(SYSCFG_PINMUX10_PINMUX10_31_28))) |
-                                                    ((SYSCFG_PINMUX10_PINMUX10_31_28_GPIO4_0 << SYSCFG_PINMUX10_PINMUX10_31_28_SHIFT));
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -77,12 +64,7 @@ static void GPIOBankPinInit()
     // GPIO8[0] 129-144
 
     // 核心板
-    GPIODirModeSet(SOC_GPIO_0_REGS, 109, GPIO_DIR_OUTPUT);  // GPIO6[12] LED3
     GPIODirModeSet(SOC_GPIO_0_REGS, 110, GPIO_DIR_OUTPUT);  // GPIO6[13] LED2
-
-    // 底板
-    GPIODirModeSet(SOC_GPIO_0_REGS, 48, GPIO_DIR_OUTPUT);   // GPIO2[15] LED4
-    GPIODirModeSet(SOC_GPIO_0_REGS, 65, GPIO_DIR_OUTPUT);   // GPIO4[00] LED3
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -111,22 +93,30 @@ void main()
     // GPIO 管脚初始化
     GPIOBankPinInit();
 
+    unsigned int SoftPWM = 4000, p, q;
+
     for(;;)
     {
-        // 延时(非精确)
-        Delay(0x00FFFFFF);
-        GPIOPinWrite(SOC_GPIO_0_REGS, 109, GPIO_PIN_LOW);  // GPIO6[12] LED3
-        GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_LOW);  // GPIO6[13] LED2
+        for(p = 0; p < SoftPWM; p++)
+        {
+            q = SoftPWM - p;
 
-        GPIOPinWrite(SOC_GPIO_0_REGS, 48, GPIO_PIN_LOW);   // GPIO2[15] LED4
-        GPIOPinWrite(SOC_GPIO_0_REGS, 65, GPIO_PIN_LOW);   // GPIO4[00] LED3
+            GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_LOW);
+            Delay(p);
 
-        // 延时(非精确)
-        Delay(0x00FFFFFF);
-        GPIOPinWrite(SOC_GPIO_0_REGS, 109, GPIO_PIN_HIGH); // GPIO6[12] LED3
-        GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_HIGH); // GPIO6[13] LED2
+            GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_HIGH);
+            Delay(q);
+        }
 
-        GPIOPinWrite(SOC_GPIO_0_REGS, 48, GPIO_PIN_HIGH);  // GPIO2[15] LED4
-        GPIOPinWrite(SOC_GPIO_0_REGS, 65, GPIO_PIN_HIGH);  // GPIO4[00] LED3
+        for(p = SoftPWM; p > 0; p--)
+        {
+            q = SoftPWM - p;
+
+            GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_LOW);
+            Delay(p);
+
+            GPIOPinWrite(SOC_GPIO_0_REGS, 110, GPIO_PIN_HIGH);
+            Delay(q);
+        }
     }
 }
