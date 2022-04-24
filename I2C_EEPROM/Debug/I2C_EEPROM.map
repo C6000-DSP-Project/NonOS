@@ -1,0 +1,427 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Sun Apr 24 17:23:01 2022
+
+OUTPUT FILE NAME:   <I2C_EEPROM.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 008024e0
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              00800000   00040000  0000382e  0003c7d2  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00800000    00800000    00002640   00002640    r-x
+  00800000    00800000    00002640   00002640    r-x .text
+00802640    00802640    00001000   00000000    rw-
+  00802640    00802640    00001000   00000000    rw- .stack
+00803640    00803640    00000178   00000178    r--
+  00803640    00803640    00000154   00000154    r-- .const
+  00803794    00803794    00000024   00000024    r-- .switch
+008037b8    008037b8    00000020   00000000    rw-
+  008037b8    008037b8    0000000c   00000000    rw- .fardata
+  008037c8    008037c8    0000000a   00000000    rw- .far
+  008037d4    008037d4    00000004   00000000    rw- .neardata
+008037d8    008037d8    00000004   00000000    r--
+  008037d8    008037d8    00000004   00000000    r-- .rodata
+008037e0    008037e0    00000058   00000058    r--
+  008037e0    008037e0    00000058   00000058    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    00800000    00002640     
+                  00800000    00000b60     utils.lib : uartStdio.obj (.text)
+                  00800b60    00000580     drivers.lib : uart.obj (.text)
+                  008010e0    000004c0                 : i2c.obj (.text)
+                  008015a0    00000400     main.obj (.text)
+                  008019a0    00000280     I2C.obj (.text)
+                  00801c20    00000140     Platform.lib : UARTConsole.obj (.text)
+                  00801d60    00000140     drivers.lib : psc.obj (.text)
+                  00801ea0    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  00801fa0    000000e0                     : exit.c.obj (.text:exit)
+                  00802080    000000e0                     : memset.c.obj (.text:memset)
+                  00802160    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00802220    000000c0                     : divu.asm.obj (.text:__divu)
+                  008022e0    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  008023a0    000000a0                     : remu.asm.obj (.text:__remu)
+                  00802440    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  008024e0    00000080                     : boot.c.obj (.text:_c_int00)
+                  00802560    00000040                     : args_main.c.obj (.text:_args_main)
+                  008025a0    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  008025c0    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  008025e0    00000020                     : exit.c.obj (.text:abort)
+                  00802600    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00802620    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    00802640    00001000     UNINITIALIZED
+                  00802640    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  00802648    00000ff8     --HOLE--
+
+.const     0    00803640    00000154     
+                  00803640    00000138     main.obj (.const:.string)
+                  00803778    0000001c     utils.lib : uartStdio.obj (.const:.string)
+
+.switch    0    00803794    00000024     
+                  00803794    00000024     utils.lib : uartStdio.obj (.switch:UARTprintf)
+
+.far       0    008037c8    0000000a     UNINITIALIZED
+                  008037c8    0000000a     (.common:I2CData)
+
+.cinit     0    008037e0    00000058     
+                  008037e0    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  008037ed    0000000a     (.cinit..rodata.load) [load image, compression = rle]
+                  008037f7    00000009     (.cinit..far.load) [load image, compression = rle]
+                  00803800    00000009     (.cinit..neardata.load) [load image, compression = rle]
+                  00803809    00000003     --HOLE-- [fill = 0]
+                  0080380c    00000008     (__TI_handler_table)
+                  00803814    00000004     --HOLE-- [fill = 0]
+                  00803818    00000020     (__TI_cinit_table)
+
+.init_array 
+*          0    00800000    00000000     UNINITIALIZED
+
+.fardata   0    008037b8    0000000c     UNINITIALIZED
+                  008037b8    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+.neardata 
+*          0    008037d4    00000004     UNINITIALIZED
+                  008037d4    00000004     main.obj (.neardata)
+
+.rodata    0    008037d8    00000004     UNINITIALIZED
+                  008037d8    00000004     utils.lib : uartStdio.obj (.rodata)
+
+.bss       0    008037dc    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       main.obj                     1024   312       4      
+       I2C.obj                      640    0         10     
+    +--+----------------------------+------+---------+---------+
+       Total:                       1664   312       14     
+                                                            
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       uart.obj                     1408   0         0      
+       i2c.obj                      1216   0         0      
+       psc.obj                      320    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       2944   0         0      
+                                                            
+    ../../Library/StarterWare/Platform/Debug/Platform.lib
+       UARTConsole.obj              320    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       320    0         0      
+                                                            
+    ../../Library/StarterWare/utils/Debug/utils.lib
+       uartStdio.obj                2912   68        0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       2912   68        0      
+                                                            
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288    0         0      
+       exit.c.obj                   256    0         12     
+       memset.c.obj                 224    0         0      
+       autoinit.c.obj               192    0         0      
+       divu.asm.obj                 192    0         0      
+       tls.c.obj                    192    0         0      
+       memcpy64.asm.obj             160    0         0      
+       remu.asm.obj                 160    0         0      
+       boot.c.obj                   128    0         0      
+       args_main.c.obj              64     0         0      
+       copy_decompress_none.c.obj   32     0         0      
+       pre_init.c.obj               32     0         0      
+       startup.c.obj                32     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1952   0         12     
+                                                            
+       Stack:                       0      0         4096   
+       Linker Generated:            0      81        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 9792   461       4122   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00803818 records: 4, size/record: 8, table size: 32
+	.fardata: load addr=008037e0, load size=0000000d bytes, run addr=008037b8, run size=0000000c bytes, compression=rle
+	.rodata: load addr=008037ed, load size=0000000a bytes, run addr=008037d8, run size=00000004 bytes, compression=rle
+	.far: load addr=008037f7, load size=00000009 bytes, run addr=008037c8, run size=0000000a bytes, compression=rle
+	.neardata: load addr=00803800, load size=00000009 bytes, run addr=008037d4, run size=00000004 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 0080380c records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+008025e0  C$$EXIT                        
+008017a0  EEPROMAckPolling               
+00801614  EEPROMByteRead                 
+008015cc  EEPROMByteWrite                
+00801770  EEPROMCurrentAddressGet        
+008016e8  EEPROMPageRead                 
+00801668  EEPROMPageWrite                
+00801564  I2CDMARxEventDisable           
+00801518  I2CDMARxEventEnable            
+00801540  I2CDMATxEventDisable           
+008014f4  I2CDMATxEventEnable            
+008014e0  I2CDMATxRxEventDisable         
+008037c8  I2CData                        
+00801bc4  I2CInit                        
+008014a8  I2CInterruptVectorGet          
+00801308  I2CMasterBusBusy               
+00801350  I2CMasterControl               
+00801420  I2CMasterDataGet               
+008013f8  I2CMasterDataPut               
+008011b8  I2CMasterDisable               
+00801180  I2CMasterEnable                
+008013d0  I2CMasterErr                   
+008010e0  I2CMasterInitExpClk            
+008012c4  I2CMasterIntClearEx            
+00801224  I2CMasterIntDisableEx          
+008011d8  I2CMasterIntEnableEx           
+0080126c  I2CMasterIntStatus             
+0080132c  I2CMasterIsBusy                
+008012f0  I2CMasterSlaveAddrSet          
+00801378  I2CMasterStart                 
+00801398  I2CMasterStop                  
+00801490  I2COwnAddressSet               
+00801ad0  I2CRcvBlocking                 
+008019ec  I2CSendBlocking                
+00801478  I2CSetDataCount                
+008014c4  I2CSlaveAddressGet             
+00801460  I2CSlaveDataGet                
+00801438  I2CSlaveDataPut                
+008012d8  I2CSlaveIntClearEx             
+00801248  I2CSlaveIntDisableEx           
+00801200  I2CSlaveIntEnableEx            
+00801288  I2CSlaveIntStatus              
+008012a4  I2CSlaveIntStatusEx            
+008013b8  I2CStatusClear                 
+00801d60  PSCModuleControl               
+00800fc4  UARTBreakCtl                   
+00800eb4  UARTCharGet                    
+00800e88  UARTCharGetNonBlocking         
+00800ef0  UARTCharPut                    
+00800e48  UARTCharPutNonBlocking         
+00800df8  UARTCharsAvail                 
+00800bf4  UARTConfigGetExpClk            
+00800b60  UARTConfigSetExpClk            
+00801d40  UARTConsoleGetc                
+00801c80  UARTConsoleInit                
+00801d18  UARTConsolePutc                
+00800ccc  UARTDMADisable                 
+00800cac  UARTDMAEnable                  
+00800d74  UARTDisable                    
+00800d58  UARTEnable                     
+00800db4  UARTFIFODisable                
+00800da0  UARTFIFOEnable                 
+00800c88  UARTFIFOLevelSet               
+008003b4  UARTGetHexNum                  
+008002f4  UARTGetNum                     
+00800664  UARTGetc                       
+008000a4  UARTGets                       
+00800f70  UARTIntDisable                 
+00800f48  UARTIntEnable                  
+00800f98  UARTIntStatus                  
+00801050  UARTModemControlClear          
+00801084  UARTModemControlGet            
+00800ff8  UARTModemControlSet            
+008010a4  UARTModemStatusGet             
+00800d34  UARTParityModeGet              
+00800cec  UARTParityModeSet              
+00800204  UARTPutHexNum                  
+00800140  UARTPutNum                     
+0080064c  UARTPutc                       
+0080000c  UARTPuts                       
+00800e28  UARTRxErrorGet                 
+00800dcc  UARTSpaceAvail                 
+00800000  UARTStdioInit                  
+008006d4  UARTprintf                     
+00800670  UARTwrite                      
+00803818  __TI_CINIT_Base                
+00803838  __TI_CINIT_Limit               
+0080380c  __TI_Handler_Table_Base        
+00803814  __TI_Handler_Table_Limit       
+00803640  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+008037d4  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+00802160  __TI_auto_init_nobinit_nopinit 
+008037b8  __TI_cleanup_ptr               
+00802600  __TI_decompress_none           
+00802620  __TI_decompress_rle24          
+008037bc  __TI_dtors_ptr                 
+008037c0  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+008022e0  __TI_tls_init                  
+ffffffff  __binit__                      
+00802220  __c6xabi_divu                  
+008023a0  __c6xabi_remu                  
+ffffffff  __c_args__                     
+00802220  __divu                         
+008023a0  __remu                         
+00802560  _args_main                     
+008024e0  _c_int00                       
+00802640  _stack                         
+008025a0  _system_post_cinit             
+008025c0  _system_pre_init               
+008025e0  abort                          
+ffffffff  binit                          
+00801fa0  exit                           
+00801804  main                           
+00802440  memcpy                         
+00802080  memset                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __TI_STACK_SIZE                
+00800000  UARTStdioInit                  
+0080000c  UARTPuts                       
+008000a4  UARTGets                       
+00800140  UARTPutNum                     
+00800204  UARTPutHexNum                  
+008002f4  UARTGetNum                     
+008003b4  UARTGetHexNum                  
+0080064c  UARTPutc                       
+00800664  UARTGetc                       
+00800670  UARTwrite                      
+008006d4  UARTprintf                     
+00800b60  UARTConfigSetExpClk            
+00800bf4  UARTConfigGetExpClk            
+00800c88  UARTFIFOLevelSet               
+00800cac  UARTDMAEnable                  
+00800ccc  UARTDMADisable                 
+00800cec  UARTParityModeSet              
+00800d34  UARTParityModeGet              
+00800d58  UARTEnable                     
+00800d74  UARTDisable                    
+00800da0  UARTFIFOEnable                 
+00800db4  UARTFIFODisable                
+00800dcc  UARTSpaceAvail                 
+00800df8  UARTCharsAvail                 
+00800e28  UARTRxErrorGet                 
+00800e48  UARTCharPutNonBlocking         
+00800e88  UARTCharGetNonBlocking         
+00800eb4  UARTCharGet                    
+00800ef0  UARTCharPut                    
+00800f48  UARTIntEnable                  
+00800f70  UARTIntDisable                 
+00800f98  UARTIntStatus                  
+00800fc4  UARTBreakCtl                   
+00800ff8  UARTModemControlSet            
+00801050  UARTModemControlClear          
+00801084  UARTModemControlGet            
+008010a4  UARTModemStatusGet             
+008010e0  I2CMasterInitExpClk            
+00801180  I2CMasterEnable                
+008011b8  I2CMasterDisable               
+008011d8  I2CMasterIntEnableEx           
+00801200  I2CSlaveIntEnableEx            
+00801224  I2CMasterIntDisableEx          
+00801248  I2CSlaveIntDisableEx           
+0080126c  I2CMasterIntStatus             
+00801288  I2CSlaveIntStatus              
+008012a4  I2CSlaveIntStatusEx            
+008012c4  I2CMasterIntClearEx            
+008012d8  I2CSlaveIntClearEx             
+008012f0  I2CMasterSlaveAddrSet          
+00801308  I2CMasterBusBusy               
+0080132c  I2CMasterIsBusy                
+00801350  I2CMasterControl               
+00801378  I2CMasterStart                 
+00801398  I2CMasterStop                  
+008013b8  I2CStatusClear                 
+008013d0  I2CMasterErr                   
+008013f8  I2CMasterDataPut               
+00801420  I2CMasterDataGet               
+00801438  I2CSlaveDataPut                
+00801460  I2CSlaveDataGet                
+00801478  I2CSetDataCount                
+00801490  I2COwnAddressSet               
+008014a8  I2CInterruptVectorGet          
+008014c4  I2CSlaveAddressGet             
+008014e0  I2CDMATxRxEventDisable         
+008014f4  I2CDMATxEventEnable            
+00801518  I2CDMARxEventEnable            
+00801540  I2CDMATxEventDisable           
+00801564  I2CDMARxEventDisable           
+008015cc  EEPROMByteWrite                
+00801614  EEPROMByteRead                 
+00801668  EEPROMPageWrite                
+008016e8  EEPROMPageRead                 
+00801770  EEPROMCurrentAddressGet        
+008017a0  EEPROMAckPolling               
+00801804  main                           
+008019ec  I2CSendBlocking                
+00801ad0  I2CRcvBlocking                 
+00801bc4  I2CInit                        
+00801c80  UARTConsoleInit                
+00801d18  UARTConsolePutc                
+00801d40  UARTConsoleGetc                
+00801d60  PSCModuleControl               
+00801fa0  exit                           
+00802080  memset                         
+00802160  __TI_auto_init_nobinit_nopinit 
+00802220  __c6xabi_divu                  
+00802220  __divu                         
+008022e0  __TI_tls_init                  
+008023a0  __c6xabi_remu                  
+008023a0  __remu                         
+00802440  memcpy                         
+008024e0  _c_int00                       
+00802560  _args_main                     
+008025a0  _system_post_cinit             
+008025c0  _system_pre_init               
+008025e0  C$$EXIT                        
+008025e0  abort                          
+00802600  __TI_decompress_none           
+00802620  __TI_decompress_rle24          
+00802640  _stack                         
+00803640  __TI_STACK_END                 
+008037b8  __TI_cleanup_ptr               
+008037bc  __TI_dtors_ptr                 
+008037c0  __TI_enable_exit_profile_output
+008037c8  I2CData                        
+008037d4  __TI_STATIC_BASE               
+0080380c  __TI_Handler_Table_Base        
+00803814  __TI_Handler_Table_Limit       
+00803818  __TI_CINIT_Base                
+00803838  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[121 symbols]
