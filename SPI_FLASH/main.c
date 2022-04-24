@@ -271,11 +271,10 @@ void main()
     // Ð´Ê¹ÄÜ
     WriteEnable();
 
-    UARTPuts("Do you want to erase a sector of the flash before writing to it ?.", -1);
-    UARTPuts("\r\nInput y(Y)/n(N) to proceed.\r\n", -1);
-
+    UARTPuts("Do you want to erase a sector of the flash before writing to it?(y or n)", -1);
     char ch = UARTGetc();
     UARTPutc(ch);
+    UARTprintf("\r\n");
 
     if((ch == 'y') || (ch == 'Y'))
     {

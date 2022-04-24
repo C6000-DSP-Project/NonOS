@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.3.12                     
 ******************************************************************************
->> Linked Sun Apr 24 18:00:03 2022
+>> Linked Sun Apr 24 20:00:12 2022
 
 OUTPUT FILE NAME:   <SPI_FLASH.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00804ac0
@@ -11,7 +11,7 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  DSPL2RAM              00800000   00040000  00006370  00039c90  RWIX
+  DSPL2RAM              00800000   00040000  00006354  00039cac  RWIX
   SHRAM                 80000000   00020000  00000000  00020000  RWIX
   DDR2                  c0000000   08000000  00000000  08000000  RWIX
 
@@ -25,18 +25,18 @@ run origin  load origin   length   init length attrs members
 00804bc0    00804bc0    00001554   00000000    rw-
   00804bc0    00804bc0    00001000   00000000    rw- .stack
   00805bc0    00805bc0    00000554   00000000    rw- .far
-00806114    00806114    000001d0   000001d0    r--
-  00806114    00806114    0000018c   0000018c    r-- .const
-  008062a0    008062a0    00000044   00000044    r-- .switch
-008062e4    008062e4    00000004   00000000    rw-
-  008062e4    008062e4    00000004   00000000    rw- .neardata
-008062e8    008062e8    00000004   00000000    r--
-  008062e8    008062e8    00000004   00000000    r-- .rodata
-008062ec    008062ec    0000001c   00000000    rw-
-  008062ec    008062ec    00000010   00000000    rw- .bss
-  008062fc    008062fc    0000000c   00000000    rw- .fardata
-00806308    00806308    00000068   00000068    r--
-  00806308    00806308    00000068   00000068    r-- .cinit
+00806114    00806114    000001b4   000001b4    r--
+  00806114    00806114    00000170   00000170    r-- .const
+  00806284    00806284    00000044   00000044    r-- .switch
+008062c8    008062c8    00000004   00000000    rw-
+  008062c8    008062c8    00000004   00000000    rw- .neardata
+008062cc    008062cc    00000004   00000000    r--
+  008062cc    008062cc    00000004   00000000    r-- .rodata
+008062d0    008062d0    0000001c   00000000    rw-
+  008062d0    008062d0    00000010   00000000    rw- .bss
+  008062e0    008062e0    0000000c   00000000    rw- .fardata
+008062f0    008062f0    00000068   00000068    r--
+  008062f0    008062f0    00000068   00000068    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -75,13 +75,13 @@ section   page    origin      length       input sections
                   00804bc0    00000008     rts6740_elf.lib : boot.c.obj (.stack)
                   00804bc8    00000ff8     --HOLE--
 
-.const     0    00806114    0000018c     
-                  00806114    00000170     main.obj (.const:.string)
-                  00806284    0000001c     utils.lib : uartStdio.obj (.const:.string)
+.const     0    00806114    00000170     
+                  00806114    00000154     main.obj (.const:.string)
+                  00806268    0000001c     utils.lib : uartStdio.obj (.const:.string)
 
-.switch    0    008062a0    00000044     
-                  008062a0    00000024     utils.lib : uartStdio.obj (.switch:UARTprintf)
-                  008062c4    00000020     SPI.obj (.switch:SPI1CSPinMuxSet)
+.switch    0    00806284    00000044     
+                  00806284    00000024     utils.lib : uartStdio.obj (.switch:UARTprintf)
+                  008062a8    00000020     SPI.obj (.switch:SPI1CSPinMuxSet)
 
 .far       0    00805bc0    00000554     UNINITIALIZED
                   00805bc0    00000240     system_config.lib : interrupt.obj (.far)
@@ -92,43 +92,43 @@ section   page    origin      length       input sections
                   00806010    00000104     (.common:vrf_data)
 
 .neardata 
-*          0    008062e4    00000004     UNINITIALIZED
-                  008062e4    00000004     SPI.obj (.neardata)
+*          0    008062c8    00000004     UNINITIALIZED
+                  008062c8    00000004     SPI.obj (.neardata)
 
-.rodata    0    008062e8    00000004     UNINITIALIZED
-                  008062e8    00000004     utils.lib : uartStdio.obj (.rodata)
+.rodata    0    008062cc    00000004     UNINITIALIZED
+                  008062cc    00000004     utils.lib : uartStdio.obj (.rodata)
 
-.bss       0    008062ec    00000010     UNINITIALIZED
-                  008062ec    00000004     (.common:p_rx)
-                  008062f0    00000004     (.common:p_tx)
-                  008062f4    00000004     (.common:rx_len)
-                  008062f8    00000004     (.common:tx_len)
+.bss       0    008062d0    00000010     UNINITIALIZED
+                  008062d0    00000004     (.common:p_rx)
+                  008062d4    00000004     (.common:p_tx)
+                  008062d8    00000004     (.common:rx_len)
+                  008062dc    00000004     (.common:tx_len)
 
-.cinit     0    00806308    00000068     
-                  00806308    0000000d     (.cinit..fardata.load) [load image, compression = rle]
-                  00806315    0000000b     (.cinit..far.load) [load image, compression = rle]
-                  00806320    0000000a     (.cinit..neardata.load) [load image, compression = rle]
-                  0080632a    0000000a     (.cinit..rodata.load) [load image, compression = rle]
-                  00806334    00000009     (.cinit..bss.load) [load image, compression = rle]
-                  0080633d    00000003     --HOLE-- [fill = 0]
-                  00806340    00000008     (__TI_handler_table)
-                  00806348    00000028     (__TI_cinit_table)
+.cinit     0    008062f0    00000068     
+                  008062f0    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  008062fd    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  00806308    0000000a     (.cinit..neardata.load) [load image, compression = rle]
+                  00806312    0000000a     (.cinit..rodata.load) [load image, compression = rle]
+                  0080631c    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  00806325    00000003     --HOLE-- [fill = 0]
+                  00806328    00000008     (__TI_handler_table)
+                  00806330    00000028     (__TI_cinit_table)
 
 .init_array 
 *          0    00800000    00000000     UNINITIALIZED
 
-.fardata   0    008062fc    0000000c     UNINITIALIZED
-                  008062fc    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+.fardata   0    008062e0    0000000c     UNINITIALIZED
+                  008062e0    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
 
 MODULE SUMMARY
 
        Module                       code    ro data   rw data
        ------                       ----    -------   -------
     .\
-       main.obj                     1120    368       260    
+       main.obj                     1120    340       260    
        SPI.obj                      1088    32        540    
     +--+----------------------------+-------+---------+---------+
-       Total:                       2208    400       800    
+       Total:                       2208    372       800    
                                                              
     ../../Library/StarterWare/Drivers/Debug/drivers.lib
        spi.obj                      1440    0         0      
@@ -173,22 +173,22 @@ MODULE SUMMARY
        Stack:                       0       0         4096   
        Linker Generated:            0       101       0      
     +--+----------------------------+-------+---------+---------+
-       Grand Total:                 19392   569       5484   
+       Grand Total:                 19392   541       5484   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00806348 records: 5, size/record: 8, table size: 40
-	.fardata: load addr=00806308, load size=0000000d bytes, run addr=008062fc, run size=0000000c bytes, compression=rle
-	.far: load addr=00806315, load size=0000000b bytes, run addr=00805bc0, run size=00000554 bytes, compression=rle
-	.neardata: load addr=00806320, load size=0000000a bytes, run addr=008062e4, run size=00000004 bytes, compression=rle
-	.rodata: load addr=0080632a, load size=0000000a bytes, run addr=008062e8, run size=00000004 bytes, compression=rle
-	.bss: load addr=00806334, load size=00000009 bytes, run addr=008062ec, run size=00000010 bytes, compression=rle
+__TI_cinit_table @ 00806330 records: 5, size/record: 8, table size: 40
+	.fardata: load addr=008062f0, load size=0000000d bytes, run addr=008062e0, run size=0000000c bytes, compression=rle
+	.far: load addr=008062fd, load size=0000000b bytes, run addr=00805bc0, run size=00000554 bytes, compression=rle
+	.neardata: load addr=00806308, load size=0000000a bytes, run addr=008062c8, run size=00000004 bytes, compression=rle
+	.rodata: load addr=00806312, load size=0000000a bytes, run addr=008062cc, run size=00000004 bytes, compression=rle
+	.bss: load addr=0080631c, load size=00000009 bytes, run addr=008062d0, run size=00000010 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00806340 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 00806328 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 
@@ -299,21 +299,21 @@ address   name
 00803960  VerifyData                     
 00803740  WriteEnable                    
 00803808  WriteFlash                     
-00806348  __TI_CINIT_Base                
-00806370  __TI_CINIT_Limit               
-00806340  __TI_Handler_Table_Base        
-00806348  __TI_Handler_Table_Limit       
+00806330  __TI_CINIT_Base                
+00806358  __TI_CINIT_Limit               
+00806328  __TI_Handler_Table_Base        
+00806330  __TI_Handler_Table_Limit       
 00805bc0  __TI_STACK_END                 
 00001000  __TI_STACK_SIZE                
-008062e4  __TI_STATIC_BASE               
+008062c8  __TI_STATIC_BASE               
 UNDEFED   __TI_TLS_INIT_Base             
 UNDEFED   __TI_TLS_INIT_Limit            
 00804740  __TI_auto_init_nobinit_nopinit 
-008062fc  __TI_cleanup_ptr               
+008062e0  __TI_cleanup_ptr               
 00804b80  __TI_decompress_none           
 00804ba0  __TI_decompress_rle24          
-00806300  __TI_dtors_ptr                 
-00806304  __TI_enable_exit_profile_output
+008062e4  __TI_dtors_ptr                 
+008062e8  __TI_enable_exit_profile_output
 ffffffff  __TI_pprof_out_hndl            
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           
@@ -351,13 +351,13 @@ ffffffff  binit
 00803aa4  main                           
 00804a20  memcpy                         
 00804660  memset                         
-008062ec  p_rx                           
-008062f0  p_tx                           
+008062d0  p_rx                           
+008062d4  p_tx                           
 00805e00  rx_data                        
-008062f4  rx_len                         
-008062e4  spi_flag                       
+008062d8  rx_len                         
+008062c8  spi_flag                       
 00805f08  tx_data                        
-008062f8  tx_len                         
+008062dc  tx_len                         
 00806010  vrf_data                       
 
 
@@ -506,19 +506,19 @@ address   name
 00805e00  rx_data                        
 00805f08  tx_data                        
 00806010  vrf_data                       
-008062e4  __TI_STATIC_BASE               
-008062e4  spi_flag                       
-008062ec  p_rx                           
-008062f0  p_tx                           
-008062f4  rx_len                         
-008062f8  tx_len                         
-008062fc  __TI_cleanup_ptr               
-00806300  __TI_dtors_ptr                 
-00806304  __TI_enable_exit_profile_output
-00806340  __TI_Handler_Table_Base        
-00806348  __TI_CINIT_Base                
-00806348  __TI_Handler_Table_Limit       
-00806370  __TI_CINIT_Limit               
+008062c8  __TI_STATIC_BASE               
+008062c8  spi_flag                       
+008062d0  p_rx                           
+008062d4  p_tx                           
+008062d8  rx_len                         
+008062dc  tx_len                         
+008062e0  __TI_cleanup_ptr               
+008062e4  __TI_dtors_ptr                 
+008062e8  __TI_enable_exit_profile_output
+00806328  __TI_Handler_Table_Base        
+00806330  __TI_CINIT_Base                
+00806330  __TI_Handler_Table_Limit       
+00806358  __TI_CINIT_Limit               
 ffffffff  __TI_pprof_out_hndl            
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           
