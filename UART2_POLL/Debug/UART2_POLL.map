@@ -1,0 +1,263 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Sun Apr 24 15:05:10 2022
+
+OUTPUT FILE NAME:   <UART2_POLL.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00801d80
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              00800000   00040000  00001f4c  0003e0b4  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00800000    00800000    00001000   00000000    rw-
+  00800000    00800000    00001000   00000000    rw- .stack
+00801000    00801000    00000ee0   00000ee0    r-x
+  00801000    00801000    00000ee0   00000ee0    r-x .text
+00801ee0    00801ee0    0000002c   00000000    rw-
+  00801ee0    00801ee0    0000002c   00000000    rw- .fardata
+00801f10    00801f10    00000040   00000040    r--
+  00801f10    00801f10    00000040   00000040    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.stack     0    00800000    00001000     UNINITIALIZED
+                  00800000    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  00800008    00000ff8     --HOLE--
+
+.text      0    00801000    00000ee0     
+                  00801000    00000580     drivers.lib : uart.obj (.text)
+                  00801580    00000140                 : psc.obj (.text)
+                  008016c0    00000120     main.obj (.text)
+                  008017e0    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  008018e0    000000e0                     : exit.c.obj (.text:exit)
+                  008019c0    000000e0                     : memset.c.obj (.text:memset)
+                  00801aa0    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00801b60    000000c0                     : divu.asm.obj (.text:__divu)
+                  00801c20    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  00801ce0    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  00801d80    00000080                     : boot.c.obj (.text:_c_int00)
+                  00801e00    00000040                     : args_main.c.obj (.text:_args_main)
+                  00801e40    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  00801e60    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  00801e80    00000020                     : exit.c.obj (.text:abort)
+                  00801ea0    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00801ec0    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.cinit     0    00801f10    00000040     
+                  00801f10    0000002c     (.cinit..fardata.load) [load image, compression = rle]
+                  00801f3c    00000008     (__TI_handler_table)
+                  00801f44    00000004     --HOLE-- [fill = 0]
+                  00801f48    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00800000    00000000     UNINITIALIZED
+
+.fardata   0    00801ee0    0000002c     UNINITIALIZED
+                  00801ee0    00000020     main.obj (.fardata:txData)
+                  00801f00    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       main.obj                     288    0         32     
+    +--+----------------------------+------+---------+---------+
+       Total:                       288    0         32     
+                                                            
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       uart.obj                     1408   0         0      
+       psc.obj                      320    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1728   0         0      
+                                                            
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288    0         0      
+       exit.c.obj                   256    0         12     
+       memset.c.obj                 224    0         0      
+       autoinit.c.obj               192    0         0      
+       divu.asm.obj                 192    0         0      
+       tls.c.obj                    192    0         0      
+       memcpy64.asm.obj             160    0         0      
+       boot.c.obj                   128    0         0      
+       args_main.c.obj              64     0         0      
+       copy_decompress_none.c.obj   32     0         0      
+       pre_init.c.obj               32     0         0      
+       startup.c.obj                32     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1792   0         12     
+                                                            
+       Stack:                       0      0         4096   
+       Linker Generated:            0      60        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 3808   60        4140   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00801f48 records: 1, size/record: 8, table size: 8
+	.fardata: load addr=00801f10, load size=0000002c bytes, run addr=00801ee0, run size=0000002c bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00801f3c records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00801e80  C$$EXIT                        
+00801580  PSCModuleControl               
+00801464  UARTBreakCtl                   
+00801354  UARTCharGet                    
+00801328  UARTCharGetNonBlocking         
+00801390  UARTCharPut                    
+008012e8  UARTCharPutNonBlocking         
+00801298  UARTCharsAvail                 
+00801094  UARTConfigGetExpClk            
+00801000  UARTConfigSetExpClk            
+0080116c  UARTDMADisable                 
+0080114c  UARTDMAEnable                  
+00801214  UARTDisable                    
+008011f8  UARTEnable                     
+00801254  UARTFIFODisable                
+00801240  UARTFIFOEnable                 
+00801128  UARTFIFOLevelSet               
+008016f8  UARTInit                       
+00801410  UARTIntDisable                 
+008013e8  UARTIntEnable                  
+00801438  UARTIntStatus                  
+008014f0  UARTModemControlClear          
+00801524  UARTModemControlGet            
+00801498  UARTModemControlSet            
+00801544  UARTModemStatusGet             
+008011d4  UARTParityModeGet              
+0080118c  UARTParityModeSet              
+008012c8  UARTRxErrorGet                 
+0080126c  UARTSpaceAvail                 
+00801f48  __TI_CINIT_Base                
+00801f50  __TI_CINIT_Limit               
+00801f3c  __TI_Handler_Table_Base        
+00801f44  __TI_Handler_Table_Limit       
+00801000  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+00000000  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+00801aa0  __TI_auto_init_nobinit_nopinit 
+00801f00  __TI_cleanup_ptr               
+00801ea0  __TI_decompress_none           
+00801ec0  __TI_decompress_rle24          
+00801f04  __TI_dtors_ptr                 
+00801f08  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00801c20  __TI_tls_init                  
+ffffffff  __binit__                      
+00801b60  __c6xabi_divu                  
+ffffffff  __c_args__                     
+00801b60  __divu                         
+00801e00  _args_main                     
+00801d80  _c_int00                       
+00800000  _stack                         
+00801e40  _system_post_cinit             
+00801e60  _system_pre_init               
+00801e80  abort                          
+ffffffff  binit                          
+008018e0  exit                           
+00801730  main                           
+00801ce0  memcpy                         
+008019c0  memset                         
+00801ee0  txData                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_STATIC_BASE               
+00001000  __TI_STACK_SIZE                
+00800000  _stack                         
+00801000  UARTConfigSetExpClk            
+00801000  __TI_STACK_END                 
+00801094  UARTConfigGetExpClk            
+00801128  UARTFIFOLevelSet               
+0080114c  UARTDMAEnable                  
+0080116c  UARTDMADisable                 
+0080118c  UARTParityModeSet              
+008011d4  UARTParityModeGet              
+008011f8  UARTEnable                     
+00801214  UARTDisable                    
+00801240  UARTFIFOEnable                 
+00801254  UARTFIFODisable                
+0080126c  UARTSpaceAvail                 
+00801298  UARTCharsAvail                 
+008012c8  UARTRxErrorGet                 
+008012e8  UARTCharPutNonBlocking         
+00801328  UARTCharGetNonBlocking         
+00801354  UARTCharGet                    
+00801390  UARTCharPut                    
+008013e8  UARTIntEnable                  
+00801410  UARTIntDisable                 
+00801438  UARTIntStatus                  
+00801464  UARTBreakCtl                   
+00801498  UARTModemControlSet            
+008014f0  UARTModemControlClear          
+00801524  UARTModemControlGet            
+00801544  UARTModemStatusGet             
+00801580  PSCModuleControl               
+008016f8  UARTInit                       
+00801730  main                           
+008018e0  exit                           
+008019c0  memset                         
+00801aa0  __TI_auto_init_nobinit_nopinit 
+00801b60  __c6xabi_divu                  
+00801b60  __divu                         
+00801c20  __TI_tls_init                  
+00801ce0  memcpy                         
+00801d80  _c_int00                       
+00801e00  _args_main                     
+00801e40  _system_post_cinit             
+00801e60  _system_pre_init               
+00801e80  C$$EXIT                        
+00801e80  abort                          
+00801ea0  __TI_decompress_none           
+00801ec0  __TI_decompress_rle24          
+00801ee0  txData                         
+00801f00  __TI_cleanup_ptr               
+00801f04  __TI_dtors_ptr                 
+00801f08  __TI_enable_exit_profile_output
+00801f3c  __TI_Handler_Table_Base        
+00801f44  __TI_Handler_Table_Limit       
+00801f48  __TI_CINIT_Base                
+00801f50  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[64 symbols]

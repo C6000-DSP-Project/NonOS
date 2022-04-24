@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.3.12                     
 ******************************************************************************
->> Linked Sun Apr 24 11:58:39 2022
+>> Linked Sun Apr 24 15:45:56 2022
 
 OUTPUT FILE NAME:   <KEYBOARD.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 008032e0
@@ -185,8 +185,8 @@ address   name
 00801b10  IntRegister                    
 00801e84  IntReset                       
 00801b34  IntUnRegister                  
-00802a08  InterruptInit                  
-008029a4  KEYFUNIsr                      
+00802a10  InterruptInit                  
+008029ac  KEYFUNIsr                      
 0080469c  KEYNum                         
 00802800  KEYNumIsr                      
 00802aa0  PSCModuleControl               
@@ -235,7 +235,7 @@ ffffffff  __c_args__
 008033c0  abort                          
 ffffffff  binit                          
 00802f00  exit                           
-00802a64  main                           
+00802a6c  main                           
 00803240  memcpy                         
 00802fe0  memset                         
 
@@ -291,9 +291,9 @@ address   name
 00802524  GPIOBankIntDisable             
 00802550  GPIOBankPinsWrite              
 00802800  KEYNumIsr                      
-008029a4  KEYFUNIsr                      
-00802a08  InterruptInit                  
-00802a64  main                           
+008029ac  KEYFUNIsr                      
+00802a10  InterruptInit                  
+00802a6c  main                           
 00802aa0  PSCModuleControl               
 00802be0  _system_post_cinit             
 00802c00  _intcVectorTable               

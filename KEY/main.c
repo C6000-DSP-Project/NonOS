@@ -98,6 +98,9 @@ static void Delay(volatile unsigned int delay)
 // StarterWare system_config.lib 驱动库内部已使用 interrupt 关键字修饰 此处仅为回调函数
 void KEY4Isr()
 {
+    // 清除中断状态
+    IntEventClear(SYS_INT_GPIO_B8INT);
+
     if(GPIOPinIntStatus(SOC_GPIO_0_REGS, 141) == GPIO_INT_PEND)
     {
         GPIOPinWrite(SOC_GPIO_0_REGS, 65, GPIO_PIN_HIGH);
@@ -113,6 +116,9 @@ void KEY4Isr()
 
 void KEY6Isr()
 {
+    // 清除中断状态
+    IntEventClear(SYS_INT_GPIO_B0INT);
+
     if(GPIOPinIntStatus(SOC_GPIO_0_REGS, 9) == GPIO_INT_PEND)
     {
         // 闪烁 LED

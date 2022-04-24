@@ -61,6 +61,8 @@
 									<listOptionValue builtIn="false" value="libc.a"/>
 									<listOptionValue builtIn="false" value="../../Library/StarterWare/Drivers/Debug/drivers.lib"/>
 									<listOptionValue builtIn="false" value="../../Library/StarterWare/SystemConfig/Debug/system_config.lib"/>
+									<listOptionValue builtIn="false" value="../../Library/StarterWare/Platform/Debug/Platform.lib"/>
+									<listOptionValue builtIn="false" value="../../Library/StarterWare/utils/Debug/utils.lib"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C6000_8.3.linkerID.SEARCH_PATH.1449328796" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.C6000_8.3.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
