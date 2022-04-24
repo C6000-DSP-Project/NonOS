@@ -131,7 +131,6 @@ static void GPIOBankPinInit()
     GPIODirModeSet(SOC_GPIO_0_REGS, SEL4, GPIO_DIR_OUTPUT);  // GPIO5[13] S4
     GPIODirModeSet(SOC_GPIO_0_REGS, SEGDP, GPIO_DIR_OUTPUT); // GPIO5[14] DP
     GPIODirModeSet(SOC_GPIO_0_REGS, SEGG, GPIO_DIR_OUTPUT);  // GPIO5[15] G
-
 }
 
 // ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥
