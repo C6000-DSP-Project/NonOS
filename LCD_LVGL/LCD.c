@@ -1,17 +1,17 @@
-/****************************************************************************/
-/*                                                                          */
-/*    新核科技(广州)有限公司                                                */
-/*                                                                          */
-/*    Copyright (C) 2022 CoreKernel Technology (Guangzhou) Co., Ltd         */
-/*                                                                          */
-/****************************************************************************/
-/****************************************************************************/
-/*                                                                          */
-/*    LCD                                                                   */
-/*                                                                          */
-/*    2014年10月14日                                                        */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      新核科技(广州)有限公司
+//
+//      Copyright (C) 2022 CoreKernel Technology Guangzhou Co., Ltd
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      LCD 屏幕显示
+//
+//      2022年04月24日
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 /*
  *    - 希望缄默(bin wang)
  *    - bin@corekernel.net
@@ -33,20 +33,19 @@
 
 #include "LCD.h"
 
-/****************************************************************************/
-/*                                                                          */
-/*              全局变量                                                    */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      全局变量
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #pragma DATA_ALIGN(g_pucBuffer, 4);
-#pragma DATA_SECTION(g_pucBuffer, ".DDR2");
-unsigned char g_pucBuffer[2][4 + (16 * 2) + (LCD_WIDTH * LCD_HEIGHT * 2)];
+unsigned char g_pucBuffer[4 + (16 * 2) + (LCD_WIDTH * LCD_HEIGHT * 2)];
 
-/****************************************************************************/
-/*                                                                          */
-/*              GPIO 管脚复用配置                                           */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      GPIO 管脚复用配置
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 static void GPIOBankPinMuxSet()
 {
     // LCD 信号
@@ -119,11 +118,11 @@ static void GPIOBankPinMuxSet()
     HWREG(SOC_SYSCFG_0_REGS + SYSCFG0_PINMUX(1)) = ((SYSCFG_PINMUX1_PINMUX1_3_0_GPIO0_7 << SYSCFG_PINMUX1_PINMUX1_3_0_SHIFT) | savePinMux);
 }
 
-/****************************************************************************/
-/*                                                                          */
-/*              LCD 背光                                                    */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      LCD 背光控制
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 void LCDBacklightEnable()
 {
     // 使能背光 GPIO0[7]（也可以使用 ECAP APWM2 调光）
@@ -138,14 +137,13 @@ void LCDBacklightDisable()
     GPIOPinWrite(SOC_GPIO_0_REGS, 8, 0);
 }
 
-/****************************************************************************/
-/*                                                                          */
-/*              硬件中断线程                                                */
-/*                                                                          */
-/****************************************************************************/
-#include "LVGL/porting/lv_port_disp_c674x.h"
-extern lv_disp_drv_t disp_drv;
-void LCDISR()
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      中断服务函数
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// StarterWare system_config.lib 驱动库内部已使用 interrupt 关键字修饰 此处仅为回调函数
+void LCDIsr()
 {
     unsigned int  status;
 
@@ -160,71 +158,76 @@ void LCDISR()
     }
 
     status = RasterClearGetIntStatus(SOC_LCDC_0_REGS, status);
-
-    /* 重要!!!
-     * 通知图形库显示更新就绪 */
-//    lv_disp_flush_ready(&disp_drv);
 }
 
-/****************************************************************************/
-/*                                                                          */
-/*              中断初始化                                   */
-/*                                                                          */
-/****************************************************************************/
-static void InterruptInit()
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      DSP 中断初始化
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+void InterruptInit(void)
 {
-    IntRegister(C674X_MASK_INT5, LCDISR);
-    IntEventMap(C674X_MASK_INT5, SYS_INT_LCDC_INT);
-    IntEnable(C674X_MASK_INT5);
+    // 注册中断服务函数
+    IntRegister(C674X_MASK_INT4, LCDIsr);
+
+    // 映射中断到 DSP 可屏蔽中断
+    IntEventMap(C674X_MASK_INT4, SYS_INT_LCDC_INT);
+
+    // 使能 DSP 可屏蔽中断
+    IntEnable(C674X_MASK_INT4);
 }
 
-/****************************************************************************/
-/*                                                                          */
-/*              版本识别                                                    */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      版本识别
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 unsigned int LCDVersionGet()
 {
     return 1;
 }
 
-/****************************************************************************/
-/*                                                                          */
-/*              LCD 初始化                                                  */
-/*                                                                          */
-/****************************************************************************/
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      LCD 初始化
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 void LCDInit()
 {
-	// 使能 LCD 模块
-	PSCModuleControl(SOC_PSC_1_REGS, HW_PSC_LCDC, PSC_POWERDOMAIN_ALWAYS_ON, PSC_MDCTL_NEXT_ENABLE);
+    // 使能外设
+    PSCModuleControl(SOC_PSC_1_REGS, HW_PSC_LCDC, PSC_POWERDOMAIN_ALWAYS_ON, PSC_MDCTL_NEXT_ENABLE);
 
-	// 管脚复用配置
-	GPIOBankPinMuxSet();
+    // 管脚复用配置
+    GPIOBankPinMuxSet();
 
-    // 中断初始化
-	InterruptInit();
-
-	// LCD 初始化
     // 禁用光栅
     RasterDisable(SOC_LCDC_0_REGS);
-    
+
     // 时钟配置
     RasterClkConfig(SOC_LCDC_0_REGS, 30000000, LCD_CLK);
 
     // 配置 LCD DMA 控制器
-    RasterDMAConfig(SOC_LCDC_0_REGS, RASTER_DOUBLE_FRAME_BUFFER, RASTER_BURST_SIZE_16, RASTER_FIFO_THRESHOLD_8, RASTER_BIG_ENDIAN_DISABLE);
+    RasterDMAConfig(SOC_LCDC_0_REGS, RASTER_DOUBLE_FRAME_BUFFER,
+                                     RASTER_BURST_SIZE_16, RASTER_FIFO_THRESHOLD_8,
+                                     RASTER_BIG_ENDIAN_DISABLE);
 
-    // 模式配置(例如:TFT 或者 STN,彩色或者黑白 等等)
-    RasterModeConfig(SOC_LCDC_0_REGS, RASTER_DISPLAY_MODE_TFT, RASTER_PALETTE_DATA, RASTER_COLOR, RASTER_RIGHT_ALIGNED);
+    // 模式配置(TFT 模式)
+    RasterModeConfig(SOC_LCDC_0_REGS, RASTER_DISPLAY_MODE_TFT,
+                                      RASTER_PALETTE_DATA, RASTER_COLOR, RASTER_RIGHT_ALIGNED);
 
     // 帧缓存数据以 LSB 方式排列
     RasterLSBDataOrderSelect(SOC_LCDC_0_REGS);
-    
+
     // 禁用 Nibble 模式
     RasterNibbleModeDisable(SOC_LCDC_0_REGS);
-   
+
     // 配置光栅控制器极性
-    RasterTiming2Configure(SOC_LCDC_0_REGS, RASTER_FRAME_CLOCK_LOW | RASTER_LINE_CLOCK_LOW | RASTER_PIXEL_CLOCK_HIGH | RASTER_SYNC_EDGE_RISING | RASTER_SYNC_CTRL_ACTIVE | RASTER_AC_BIAS_HIGH, 0, 255);
+    RasterTiming2Configure(SOC_LCDC_0_REGS, RASTER_FRAME_CLOCK_LOW  |
+                                            RASTER_LINE_CLOCK_LOW   |
+                                            RASTER_PIXEL_CLOCK_HIGH |
+                                            RASTER_SYNC_EDGE_RISING |
+                                            RASTER_SYNC_CTRL_ACTIVE |
+                                            RASTER_AC_BIAS_HIGH, 0, 255);
 
     // 配置水平 / 垂直参数
     RasterHparamConfig(SOC_LCDC_0_REGS, 800, 30, 210, 45);
@@ -233,17 +236,22 @@ void LCDInit()
     // 配置 FIFO DMA 延时
     RasterFIFODMADelayConfig(SOC_LCDC_0_REGS, 2);
 
-    // 配置显存
-    RasterDMAFBConfig(SOC_LCDC_0_REGS, (unsigned int)(g_pucBuffer[0] + PALETTE_OFFSET), (unsigned int)(g_pucBuffer[0] + PALETTE_OFFSET) + sizeof(g_pucBuffer[0]) - 2 - PALETTE_OFFSET, 0);
-    RasterDMAFBConfig(SOC_LCDC_0_REGS, (unsigned int)(g_pucBuffer[1] + PALETTE_OFFSET), (unsigned int)(g_pucBuffer[1] + PALETTE_OFFSET) + sizeof(g_pucBuffer[1]) - 2 - PALETTE_OFFSET, 1);
+    // 配置帧缓冲区
+    RasterDMAFBConfig(SOC_LCDC_0_REGS,
+                      (unsigned int)(g_pucBuffer + PALETTE_OFFSET),
+                      (unsigned int)(g_pucBuffer + PALETTE_OFFSET) + sizeof(g_pucBuffer) - 2 - PALETTE_OFFSET,
+                      0);
 
-    // 16Bit 无需调色板
-    *((unsigned short *)&g_pucBuffer[0][4]) = 0x4000;
-    *((unsigned short *)&g_pucBuffer[1][4]) = 0x4000;
+    RasterDMAFBConfig(SOC_LCDC_0_REGS,
+                      (unsigned int)(g_pucBuffer + PALETTE_OFFSET),
+                      (unsigned int)(g_pucBuffer + PALETTE_OFFSET) + sizeof(g_pucBuffer) - 2 - PALETTE_OFFSET,
+                      1);
 
-    // 使能 LCD 帧结束中断
+    // 复制调色板(RGB565 无需调色板)
+    *((unsigned short *)&g_pucBuffer[4]) = 0x4000;
+
+    // 使能 LCD 中断
     RasterEndOfFrameIntEnable(SOC_LCDC_0_REGS);
-    RasterIntEnable(SOC_LCDC_0_REGS, RASTER_END_OF_FRAME0_INT | RASTER_END_OF_FRAME1_INT);
 
     // 使能光栅
     RasterEnable(SOC_LCDC_0_REGS);

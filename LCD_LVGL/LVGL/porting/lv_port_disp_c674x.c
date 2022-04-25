@@ -81,9 +81,9 @@ void lv_port_disp_init(void)
 
     /* 双显示缓冲区 */
     static lv_disp_draw_buf_t draw_buf_dsc;
-    unsigned char *LCDBuf0 = (unsigned char *)g_pucBuffer[0] + 36;
-    unsigned char *LCDBuf1 = (unsigned char *)g_pucBuffer[1] + 36;
-    lv_disp_draw_buf_init(&draw_buf_dsc, LCDBuf0, LCDBuf1, LCD_WIDTH * LCD_HEIGHT);
+    static lv_color_t buf_1[LCD_WIDTH * 10];  /* 10 行 */
+    static lv_color_t buf_2[LCD_WIDTH * 10];  /* 10 行 */
+    lv_disp_draw_buf_init(&draw_buf_dsc, buf_1, buf_2, LCD_WIDTH * 10);
 
     /*-----------------------------------
      * 注册 LVGL 显示设备
@@ -102,7 +102,7 @@ void lv_port_disp_init(void)
     disp_drv.draw_buf = &draw_buf_dsc;
 
     /* 强制全屏刷新 */
-    disp_drv.full_refresh = 1;
+    disp_drv.full_refresh = 0;
 
     /* 注册驱动 */
     lv_disp_drv_register(&disp_drv);
@@ -126,25 +126,24 @@ static void disp_init(void)
 /****************************************************************************/
 static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *color_p)
 {
-//    int32_t x;
-//    int32_t y;
-//
-//    unsigned short *LCDBuf = (unsigned short *)g_pucBuffer;
-//
-//    for(y = area->y1; y <= area->y2; y++)
-//    {
-//        for(x = area->x1; x <= area->x2; x++)
-//        {
-//            LCDBuf[((PALETTE_OFFSET + PALETTE_SIZE) / 2) + y * LCD_WIDTH + x] = *((unsigned short *)color_p);
-//            color_p++;
-//        }
-//    }
+    int32_t x;
+    int32_t y;
 
-    /* 维护缓存一致性 */
+    unsigned short *LCDBuf = (unsigned short *)g_pucBuffer;
+
+    for(y = area->y1; y <= area->y2; y++)
+    {
+        for(x = area->x1; x <= area->x2; x++)
+        {
+            LCDBuf[((PALETTE_OFFSET + PALETTE_SIZE) / 2) + y * LCD_WIDTH + x] = *((unsigned short *)color_p);
+            color_p++;
+        }
+    }
 
     /* 重要!!!
      * 通知图形库显示更新就绪 */
     lv_disp_flush_ready(disp_drv);
+
 }
 
 /****************************************************************************/
