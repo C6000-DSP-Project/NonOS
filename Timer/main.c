@@ -107,8 +107,7 @@ void TimerIsr()
     // 禁用定时器 / 计数器中断
     TimerIntDisable(SOC_TMR_2_REGS, TMR_INT_TMR12_NON_CAPT_MODE);
 
-    // 清除中断标志
-    IntEventClear(SYS_INT_T64P2_TINTALL);
+    // 清除定时器中断标志
     TimerIntStatusClear(SOC_TMR_2_REGS, TMR_INT_TMR12_NON_CAPT_MODE);
 
     // 改变 LED 状态

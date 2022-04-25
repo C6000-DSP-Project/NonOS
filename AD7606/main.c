@@ -349,7 +349,7 @@ void main()
         {
             for(i = 0; i < 8; i++)
             {
-                ADCValue[i] = EMIFData[i] / 32768.0 * (ADCRange ? 10 : 5);
+                ADCValue[i] = EMIFData[i] / 32767.0 * (ADCRange ? 10 : 5);
                 sprintf(str, "ADC CH%d Value %f\r\n", i, ADCValue[i]);
                 UARTprintf("%s\r\n", str);
             }
