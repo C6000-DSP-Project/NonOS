@@ -85,7 +85,7 @@ static void Delay(volatile unsigned int delay)
                             GPIOPinWrite(SOC_GPIO_0_REGS, 57, GPIO_PIN_LOW);   \
                             Delay(100);                                        \
                             GPIOPinWrite(SOC_GPIO_0_REGS, 57, GPIO_PIN_HIGH);  \
-                       }                                                    // GPIO3[08]
+                       }                                                   // GPIO3[08]
 
 #define SDATA_SET     GPIOPinWrite(SOC_GPIO_0_REGS, 58, GPIO_PIN_HIGH)     // GPIO3[09]
 #define SDATA_CLR     GPIOPinWrite(SOC_GPIO_0_REGS, 58, GPIO_PIN_LOW)      // GPIO3[09]
@@ -139,6 +139,7 @@ void AD9833Output(unsigned char mode, unsigned char regsel, unsigned int freq, u
     // 频率换算
     float FregReg = freq * 1.0 * (2 << 27) / AD9833_MCLK;
 
+    // 选择频率相位寄存器组
     if(regsel == 0)
     {
         // 频率

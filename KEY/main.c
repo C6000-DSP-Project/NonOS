@@ -67,13 +67,13 @@ static void GPIOBankPinMuxSet()
 static void GPIOBankPinInit()
 {
     // 底板 LED
-    GPIODirModeSet(SOC_GPIO_0_REGS, 48, GPIO_DIR_OUTPUT);   // GPIO2[15] LED4
-    GPIODirModeSet(SOC_GPIO_0_REGS, 65, GPIO_DIR_OUTPUT);   // GPIO4[00] LED3
+    GPIODirModeSet(SOC_GPIO_0_REGS, 48, GPIO_DIR_OUTPUT);               // GPIO2[15] LED4
+    GPIODirModeSet(SOC_GPIO_0_REGS, 65, GPIO_DIR_OUTPUT);               // GPIO4[00] LED3
 
     // 按键
     // 配置中断触发方式
-    GPIOIntTypeSet(SOC_GPIO_0_REGS, 9, GPIO_INT_TYPE_FALLEDGE);         // SW4 下降沿
-    GPIOIntTypeSet(SOC_GPIO_0_REGS, 141, GPIO_INT_TYPE_FALLEDGE);       // SW6 上升沿及下降沿
+    GPIOIntTypeSet(SOC_GPIO_0_REGS, 9, GPIO_INT_TYPE_FALLEDGE);         // SW6 下降沿
+    GPIOIntTypeSet(SOC_GPIO_0_REGS, 141, GPIO_INT_TYPE_FALLEDGE);       // SW4 上升沿及下降沿
 
     // 使能 GPIO BANK 中断
     GPIOBankIntEnable(SOC_GPIO_0_REGS, 0);                              // GPIO BANK0
