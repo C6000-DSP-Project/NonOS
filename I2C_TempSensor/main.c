@@ -135,9 +135,7 @@ void TempSensorInit()
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 void main()
 {
-    // 串口初始化
     UARTStdioInit();
-
     UARTprintf("\r\nCoreKernel SHT30 Example...\r\n");
 
     // 温湿度传感器初始化
