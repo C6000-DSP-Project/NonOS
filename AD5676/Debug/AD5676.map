@@ -1,0 +1,540 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Mon Apr 25 18:57:47 2022
+
+OUTPUT FILE NAME:   <AD5676.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 008051e0
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              00800000   00040000  000068c8  00039738  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00800000    00800000    00005340   00005340    r-x
+  00800000    00800000    00005340   00005340    r-x .text
+00805340    00805340    0000144c   00000000    rw-
+  00805340    00805340    00001000   00000000    rw- .stack
+  00806340    00806340    0000044c   00000000    rw- .far
+0080678c    0080678c    000000b0   000000b0    r--
+  0080678c    0080678c    0000005c   0000005c    r-- .const
+  008067e8    008067e8    00000054   00000054    r-- .switch
+0080683c    0080683c    00000004   00000000    rw-
+  0080683c    0080683c    00000004   00000000    rw- .neardata
+00806840    00806840    00000004   00000000    r--
+  00806840    00806840    00000004   00000000    r-- .rodata
+00806844    00806844    0000001c   00000000    rw-
+  00806844    00806844    00000010   00000000    rw- .bss
+  00806854    00806854    0000000c   00000000    rw- .fardata
+00806860    00806860    00000068   00000068    r--
+  00806860    00806860    00000068   00000068    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    00800000    00005340     
+                  00800000    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  00801aa0    00000b60     utils.lib : uartStdio.obj (.text)
+                  00802600    00000620     drivers.lib : spi.obj (.text)
+                  00802c20    000005e0     system_config.lib : interrupt.obj (.text)
+                  00803200    000005c0     drivers.lib : gpio.obj (.text)
+                  008037c0    000005c0                 : uart.obj (.text)
+                  00803d80    000004e0     SPI.obj (.text)
+                  00804260    000004a0     main.obj (.text)
+                  00804700    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  00804800    00000200     system_config.lib : intvecs.obj (.text)
+                  00804a00    00000160     drivers.lib : psc.obj (.text)
+                  00804b60    00000140     Platform.lib : UARTConsole.obj (.text)
+                  00804ca0    000000e0     rts6740_elf.lib : exit.c.obj (.text:exit)
+                  00804d80    000000e0                     : memset.c.obj (.text:memset)
+                  00804e60    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00804f20    000000c0                     : divu.asm.obj (.text:__divu)
+                  00804fe0    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  008050a0    000000a0                     : remu.asm.obj (.text:__remu)
+                  00805140    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  008051e0    00000080                     : boot.c.obj (.text:_c_int00)
+                  00805260    00000040                     : args_main.c.obj (.text:_args_main)
+                  008052a0    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  008052c0    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  008052e0    00000020                     : exit.c.obj (.text:abort)
+                  00805300    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00805320    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    00805340    00001000     UNINITIALIZED
+                  00805340    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  00805348    00000ff8     --HOLE--
+
+.const     0    0080678c    0000005c     
+                  0080678c    00000040     main.obj (.const:.string)
+                  008067cc    0000001c     utils.lib : uartStdio.obj (.const:.string)
+
+.switch    0    008067e8    00000054     
+                  008067e8    00000024     utils.lib : uartStdio.obj (.switch:UARTprintf)
+                  0080680c    00000020     SPI.obj (.switch:SPI1CSPinMuxSet)
+                  0080682c    00000010     drivers.lib : gpio.obj (.switch:GPIOIntTypeSet)
+
+.far       0    00806340    0000044c     UNINITIALIZED
+                  00806340    00000240     system_config.lib : interrupt.obj (.far)
+                  00806580    00000104     (.common:rx_data)
+                  00806684    00000004     --HOLE--
+                  00806688    00000104     (.common:tx_data)
+
+.neardata 
+*          0    0080683c    00000004     UNINITIALIZED
+                  0080683c    00000004     SPI.obj (.neardata)
+
+.rodata    0    00806840    00000004     UNINITIALIZED
+                  00806840    00000004     utils.lib : uartStdio.obj (.rodata)
+
+.bss       0    00806844    00000010     UNINITIALIZED
+                  00806844    00000004     (.common:p_rx)
+                  00806848    00000004     (.common:p_tx)
+                  0080684c    00000004     (.common:rx_len)
+                  00806850    00000004     (.common:tx_len)
+
+.cinit     0    00806860    00000068     
+                  00806860    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  0080686d    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  00806878    0000000a     (.cinit..neardata.load) [load image, compression = rle]
+                  00806882    0000000a     (.cinit..rodata.load) [load image, compression = rle]
+                  0080688c    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  00806895    00000003     --HOLE-- [fill = 0]
+                  00806898    00000008     (__TI_handler_table)
+                  008068a0    00000028     (__TI_cinit_table)
+
+.init_array 
+*          0    00800000    00000000     UNINITIALIZED
+
+.fardata   0    00806854    0000000c     UNINITIALIZED
+                  00806854    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
+    .\
+       SPI.obj                      1248    32        540    
+       main.obj                     1184    64        0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       2432    96        540    
+                                                             
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       spi.obj                      1568    0         0      
+       gpio.obj                     1472    16        0      
+       uart.obj                     1472    0         0      
+       psc.obj                      352     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       4864    16        0      
+                                                             
+    ../../Library/StarterWare/Platform/Debug/Platform.lib
+       UARTConsole.obj              320     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       320     0         0      
+                                                             
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576    
+       intvecs.obj                  512     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       8832    0         576    
+                                                             
+    ../../Library/StarterWare/utils/Debug/utils.lib
+       uartStdio.obj                2912    68        0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       2912    68        0      
+                                                             
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288     0         0      
+       exit.c.obj                   256     0         12     
+       memset.c.obj                 224     0         0      
+       autoinit.c.obj               192     0         0      
+       divu.asm.obj                 192     0         0      
+       tls.c.obj                    192     0         0      
+       memcpy64.asm.obj             160     0         0      
+       remu.asm.obj                 160     0         0      
+       boot.c.obj                   128     0         0      
+       args_main.c.obj              64      0         0      
+       copy_decompress_none.c.obj   32      0         0      
+       pre_init.c.obj               32      0         0      
+       startup.c.obj                32      0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1952    0         12     
+                                                             
+       Stack:                       0       0         4096   
+       Linker Generated:            0       101       0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 21312   281       5224   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 008068a0 records: 5, size/record: 8, table size: 40
+	.fardata: load addr=00806860, load size=0000000d bytes, run addr=00806854, run size=0000000c bytes, compression=rle
+	.far: load addr=0080686d, load size=0000000b bytes, run addr=00806340, run size=0000044c bytes, compression=rle
+	.neardata: load addr=00806878, load size=0000000a bytes, run addr=0080683c, run size=00000004 bytes, compression=rle
+	.rodata: load addr=00806882, load size=0000000a bytes, run addr=00806840, run size=00000004 bytes, compression=rle
+	.bss: load addr=0080688c, load size=00000009 bytes, run addr=00806844, run size=00000010 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00806898 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+008043a0  AD5676RInit                    
+008052e0  C$$EXIT                        
+00803078  ExcCombineAdd                  
+008030c0  ExcCombineRemove               
+00803058  ExcGlobalEnable                
+008036d4  GPIOBankIntDisable             
+008036a8  GPIOBankIntEnable              
+00803704  GPIOBankPinsWrite              
+008032a0  GPIODirModeGet                 
+00803200  GPIODirModeSet                 
+00803560  GPIOIntTypeGet                 
+008033ec  GPIOIntTypeSet                 
+00803658  GPIOPinIntClear                
+008035f0  GPIOPinIntStatus               
+00803388  GPIOPinRead                    
+00803304  GPIOPinWrite                   
+00802c20  IntDSPINTCInit                 
+00802fd0  IntDisable                     
+00802fa0  IntEnable                      
+00802d98  IntEventClear                  
+00802ed4  IntEventCombineAdd             
+00802dd0  IntEventCombineInit            
+00802f78  IntEventCombineRegister        
+00802f28  IntEventCombineRemove          
+00802cdc  IntEventMap                    
+00802d64  IntEventSet                    
+0080302c  IntGlobalDisable               
+00803018  IntGlobalEnable                
+00803040  IntGlobalRestore               
+00802c90  IntRegister                    
+00803004  IntReset                       
+00802cb4  IntUnRegister                  
+00804a00  PSCModuleControl               
+00803d80  SPI1CSPinMuxSet                
+00802894  SPICSTimerDisable              
+008028c0  SPICSTimerEnable               
+008028f8  SPICharLengthSet               
+00802600  SPIClkConfigure                
+00802950  SPIConfigClkFormat             
+008027f0  SPIDat1Config                  
+008040ac  SPIDataFormatConfig            
+00802bd4  SPIDataReceive                 
+008027cc  SPIDefaultCSSet                
+00802710  SPIDelayConfigure              
+00802648  SPIEnable                      
+00804198  SPIInit                        
+00802b6c  SPIIntDisable                  
+00802b44  SPIIntEnable                   
+00802b18  SPIIntLevelSet                 
+00802bb0  SPIIntStatus                   
+00802b94  SPIIntStatusClear              
+00802bf4  SPIInterruptVectorGet          
+00803f48  SPIIsr                         
+008026a0  SPIModeConfigure               
+00802680  SPIOutOfReset                  
+00802a44  SPIParityDisable               
+008029e8  SPIParityEnable                
+008026c8  SPIPinControl                  
+00802664  SPIReset                       
+008029c0  SPIShiftLsbFirst               
+00802988  SPIShiftMsbFirst               
+00802860  SPITransmitData1               
+00802ae0  SPIWaitDisable                 
+00802ab4  SPIWaitEnable                  
+00802a80  SPIWdelaySet                   
+008040f0  SPIWrite                       
+00804048  SpiTransfer                    
+00803c6c  UARTBreakCtl                   
+00803b50  UARTCharGet                    
+00803b24  UARTCharGetNonBlocking         
+00803b8c  UARTCharPut                    
+00803ae4  UARTCharPutNonBlocking         
+00803a94  UARTCharsAvail                 
+00803868  UARTConfigGetExpClk            
+008037c0  UARTConfigSetExpClk            
+00804c80  UARTConsoleGetc                
+00804bc0  UARTConsoleInit                
+00804c58  UARTConsolePutc                
+00803940  UARTDMADisable                 
+00803920  UARTDMAEnable                  
+00803a00  UARTDisable                    
+008039e0  UARTEnable                     
+00803a4c  UARTFIFODisable                
+00803a30  UARTFIFOEnable                 
+008038f4  UARTFIFOLevelSet               
+00801e54  UARTGetHexNum                  
+00801d94  UARTGetNum                     
+00802104  UARTGetc                       
+00801b44  UARTGets                       
+00803c10  UARTIntDisable                 
+00803be4  UARTIntEnable                  
+00803c40  UARTIntStatus                  
+00803d0c  UARTModemControlClear          
+00803d40  UARTModemControlGet            
+00803cb4  UARTModemControlSet            
+00803d60  UARTModemStatusGet             
+008039b4  UARTParityModeGet              
+00803960  UARTParityModeSet              
+00801ca4  UARTPutHexNum                  
+00801be0  UARTPutNum                     
+008020ec  UARTPutc                       
+00801aac  UARTPuts                       
+00803ac4  UARTRxErrorGet                 
+00803a68  UARTSpaceAvail                 
+00801aa0  UARTStdioInit                  
+00802174  UARTprintf                     
+00802110  UARTwrite                      
+008068a0  __TI_CINIT_Base                
+008068c8  __TI_CINIT_Limit               
+00806898  __TI_Handler_Table_Base        
+008068a0  __TI_Handler_Table_Limit       
+00806340  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+0080683c  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+00804e60  __TI_auto_init_nobinit_nopinit 
+00806854  __TI_cleanup_ptr               
+00805300  __TI_decompress_none           
+00805320  __TI_decompress_rle24          
+00806858  __TI_dtors_ptr                 
+0080685c  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00804fe0  __TI_tls_init                  
+ffffffff  __binit__                      
+00804f20  __c6xabi_divu                  
+008050a0  __c6xabi_remu                  
+ffffffff  __c_args__                     
+00804f20  __divu                         
+008050a0  __remu                         
+00805260  _args_main                     
+00800ff8  _c674x_mask_int10_isr          
+008011c0  _c674x_mask_int11_isr          
+00801384  _c674x_mask_int12_isr          
+00801548  _c674x_mask_int13_isr          
+00801710  _c674x_mask_int14_isr          
+008018d8  _c674x_mask_int15_isr          
+00800550  _c674x_mask_int4_isr           
+00800718  _c674x_mask_int5_isr           
+008008e0  _c674x_mask_int6_isr           
+00800aa4  _c674x_mask_int7_isr           
+00800c68  _c674x_mask_int8_isr           
+00800e30  _c674x_mask_int9_isr           
+00800000  _c674x_nmi_isr                 
+008001c4  _c674x_rsvd_int2_isr           
+00800388  _c674x_rsvd_int3_isr           
+008051e0  _c_int00                       
+00804800  _intcVectorTable               
+00805340  _stack                         
+008052a0  _system_post_cinit             
+008052c0  _system_pre_init               
+008052e0  abort                          
+ffffffff  binit                          
+00804ca0  exit                           
+008043ec  main                           
+00805140  memcpy                         
+00804d80  memset                         
+00806844  p_rx                           
+00806848  p_tx                           
+00806580  rx_data                        
+0080684c  rx_len                         
+0080683c  spi_flag                       
+00806688  tx_data                        
+00806850  tx_len                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __TI_STACK_SIZE                
+00800000  _c674x_nmi_isr                 
+008001c4  _c674x_rsvd_int2_isr           
+00800388  _c674x_rsvd_int3_isr           
+00800550  _c674x_mask_int4_isr           
+00800718  _c674x_mask_int5_isr           
+008008e0  _c674x_mask_int6_isr           
+00800aa4  _c674x_mask_int7_isr           
+00800c68  _c674x_mask_int8_isr           
+00800e30  _c674x_mask_int9_isr           
+00800ff8  _c674x_mask_int10_isr          
+008011c0  _c674x_mask_int11_isr          
+00801384  _c674x_mask_int12_isr          
+00801548  _c674x_mask_int13_isr          
+00801710  _c674x_mask_int14_isr          
+008018d8  _c674x_mask_int15_isr          
+00801aa0  UARTStdioInit                  
+00801aac  UARTPuts                       
+00801b44  UARTGets                       
+00801be0  UARTPutNum                     
+00801ca4  UARTPutHexNum                  
+00801d94  UARTGetNum                     
+00801e54  UARTGetHexNum                  
+008020ec  UARTPutc                       
+00802104  UARTGetc                       
+00802110  UARTwrite                      
+00802174  UARTprintf                     
+00802600  SPIClkConfigure                
+00802648  SPIEnable                      
+00802664  SPIReset                       
+00802680  SPIOutOfReset                  
+008026a0  SPIModeConfigure               
+008026c8  SPIPinControl                  
+00802710  SPIDelayConfigure              
+008027cc  SPIDefaultCSSet                
+008027f0  SPIDat1Config                  
+00802860  SPITransmitData1               
+00802894  SPICSTimerDisable              
+008028c0  SPICSTimerEnable               
+008028f8  SPICharLengthSet               
+00802950  SPIConfigClkFormat             
+00802988  SPIShiftMsbFirst               
+008029c0  SPIShiftLsbFirst               
+008029e8  SPIParityEnable                
+00802a44  SPIParityDisable               
+00802a80  SPIWdelaySet                   
+00802ab4  SPIWaitEnable                  
+00802ae0  SPIWaitDisable                 
+00802b18  SPIIntLevelSet                 
+00802b44  SPIIntEnable                   
+00802b6c  SPIIntDisable                  
+00802b94  SPIIntStatusClear              
+00802bb0  SPIIntStatus                   
+00802bd4  SPIDataReceive                 
+00802bf4  SPIInterruptVectorGet          
+00802c20  IntDSPINTCInit                 
+00802c90  IntRegister                    
+00802cb4  IntUnRegister                  
+00802cdc  IntEventMap                    
+00802d64  IntEventSet                    
+00802d98  IntEventClear                  
+00802dd0  IntEventCombineInit            
+00802ed4  IntEventCombineAdd             
+00802f28  IntEventCombineRemove          
+00802f78  IntEventCombineRegister        
+00802fa0  IntEnable                      
+00802fd0  IntDisable                     
+00803004  IntReset                       
+00803018  IntGlobalEnable                
+0080302c  IntGlobalDisable               
+00803040  IntGlobalRestore               
+00803058  ExcGlobalEnable                
+00803078  ExcCombineAdd                  
+008030c0  ExcCombineRemove               
+00803200  GPIODirModeSet                 
+008032a0  GPIODirModeGet                 
+00803304  GPIOPinWrite                   
+00803388  GPIOPinRead                    
+008033ec  GPIOIntTypeSet                 
+00803560  GPIOIntTypeGet                 
+008035f0  GPIOPinIntStatus               
+00803658  GPIOPinIntClear                
+008036a8  GPIOBankIntEnable              
+008036d4  GPIOBankIntDisable             
+00803704  GPIOBankPinsWrite              
+008037c0  UARTConfigSetExpClk            
+00803868  UARTConfigGetExpClk            
+008038f4  UARTFIFOLevelSet               
+00803920  UARTDMAEnable                  
+00803940  UARTDMADisable                 
+00803960  UARTParityModeSet              
+008039b4  UARTParityModeGet              
+008039e0  UARTEnable                     
+00803a00  UARTDisable                    
+00803a30  UARTFIFOEnable                 
+00803a4c  UARTFIFODisable                
+00803a68  UARTSpaceAvail                 
+00803a94  UARTCharsAvail                 
+00803ac4  UARTRxErrorGet                 
+00803ae4  UARTCharPutNonBlocking         
+00803b24  UARTCharGetNonBlocking         
+00803b50  UARTCharGet                    
+00803b8c  UARTCharPut                    
+00803be4  UARTIntEnable                  
+00803c10  UARTIntDisable                 
+00803c40  UARTIntStatus                  
+00803c6c  UARTBreakCtl                   
+00803cb4  UARTModemControlSet            
+00803d0c  UARTModemControlClear          
+00803d40  UARTModemControlGet            
+00803d60  UARTModemStatusGet             
+00803d80  SPI1CSPinMuxSet                
+00803f48  SPIIsr                         
+00804048  SpiTransfer                    
+008040ac  SPIDataFormatConfig            
+008040f0  SPIWrite                       
+00804198  SPIInit                        
+008043a0  AD5676RInit                    
+008043ec  main                           
+00804800  _intcVectorTable               
+00804a00  PSCModuleControl               
+00804bc0  UARTConsoleInit                
+00804c58  UARTConsolePutc                
+00804c80  UARTConsoleGetc                
+00804ca0  exit                           
+00804d80  memset                         
+00804e60  __TI_auto_init_nobinit_nopinit 
+00804f20  __c6xabi_divu                  
+00804f20  __divu                         
+00804fe0  __TI_tls_init                  
+008050a0  __c6xabi_remu                  
+008050a0  __remu                         
+00805140  memcpy                         
+008051e0  _c_int00                       
+00805260  _args_main                     
+008052a0  _system_post_cinit             
+008052c0  _system_pre_init               
+008052e0  C$$EXIT                        
+008052e0  abort                          
+00805300  __TI_decompress_none           
+00805320  __TI_decompress_rle24          
+00805340  _stack                         
+00806340  __TI_STACK_END                 
+00806580  rx_data                        
+00806688  tx_data                        
+0080683c  __TI_STATIC_BASE               
+0080683c  spi_flag                       
+00806844  p_rx                           
+00806848  p_tx                           
+0080684c  rx_len                         
+00806850  tx_len                         
+00806854  __TI_cleanup_ptr               
+00806858  __TI_dtors_ptr                 
+0080685c  __TI_enable_exit_profile_output
+00806898  __TI_Handler_Table_Base        
+008068a0  __TI_CINIT_Base                
+008068a0  __TI_Handler_Table_Limit       
+008068c8  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[166 symbols]
