@@ -1,0 +1,219 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Thu Apr 28 12:00:46 2022
+
+OUTPUT FILE NAME:   <PRULoader.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 11801820
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              11800000   00040000  000020a8  0003df58  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+11800000    11800000    00001000   00000000    rw-
+  11800000    11800000    00001000   00000000    rw- .stack
+11801000    11801000    0000107c   0000107c    r-x
+  11801000    11801000    000009c0   000009c0    r-x .text
+  118019c0    118019c0    000006bc   000006bc    r-- .const
+1180207c    1180207c    0000000c   00000000    rw-
+  1180207c    1180207c    0000000c   00000000    rw- .fardata
+11802088    11802088    00000020   00000020    r--
+  11802088    11802088    00000020   00000020    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.stack     0    11800000    00001000     UNINITIALIZED
+                  11800000    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  11800008    00000ff8     --HOLE--
+
+.text      0    11801000    000009c0     
+                  11801000    000001e0     Loader.lib : PRULoader.obj (.text)
+                  118011e0    00000160     drivers.lib : psc.obj (.text)
+                  11801340    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  11801440    000000e0                     : exit.c.obj (.text:exit)
+                  11801520    000000e0                     : memset.c.obj (.text:memset)
+                  11801600    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  118016c0    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  11801780    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  11801820    00000080                     : boot.c.obj (.text:_c_int00)
+                  118018a0    00000040                     : args_main.c.obj (.text:_args_main)
+                  118018e0    00000040     main.obj (.text)
+                  11801920    00000020     rts6740_elf.lib : startup.c.obj (.text:_system_post_cinit)
+                  11801940    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  11801960    00000020                     : exit.c.obj (.text:abort)
+                  11801980    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  118019a0    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.const     0    118019c0    000006bc     
+                  118019c0    000006a8     main.obj (.const:.string:PRU_Code)
+                  11802068    00000014     main.obj (.const:.string:PRU_Data)
+
+.cinit     0    11802088    00000020     
+                  11802088    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  11802095    00000003     --HOLE-- [fill = 0]
+                  11802098    00000008     (__TI_handler_table)
+                  118020a0    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    11800000    00000000     UNINITIALIZED
+
+.fardata   0    1180207c    0000000c     UNINITIALIZED
+                  1180207c    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       main.obj                     64     1724      0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       64     1724      0      
+                                                            
+    ../../Library/Loader/Debug/Loader.lib
+       PRULoader.obj                480    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       480    0         0      
+                                                            
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       psc.obj                      352    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       352    0         0      
+                                                            
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288    0         0      
+       exit.c.obj                   256    0         12     
+       memset.c.obj                 224    0         0      
+       autoinit.c.obj               192    0         0      
+       tls.c.obj                    192    0         0      
+       memcpy64.asm.obj             160    0         0      
+       boot.c.obj                   128    0         0      
+       args_main.c.obj              64     0         0      
+       copy_decompress_none.c.obj   32     0         0      
+       pre_init.c.obj               32     0         0      
+       startup.c.obj                32     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1600   0         12     
+                                                            
+       Stack:                       0      0         4096   
+       Linker Generated:            0      29        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 2496   1753      4108   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 118020a0 records: 1, size/record: 8, table size: 8
+	.fardata: load addr=11802088, load size=0000000d bytes, run addr=1180207c, run size=0000000c bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 11802098 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+11801960  C$$EXIT                        
+11801040  PRUDisable                     
+11801000  PRUEnable                      
+11801074  PRULoad                        
+11801148  PRURun                         
+11801178  PRUWaitForHalt                 
+118011e0  PSCModuleControl               
+118020a0  __TI_CINIT_Base                
+118020a8  __TI_CINIT_Limit               
+11802098  __TI_Handler_Table_Base        
+118020a0  __TI_Handler_Table_Limit       
+11801000  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+00000000  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+11801600  __TI_auto_init_nobinit_nopinit 
+1180207c  __TI_cleanup_ptr               
+11801980  __TI_decompress_none           
+118019a0  __TI_decompress_rle24          
+11802080  __TI_dtors_ptr                 
+11802084  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+118016c0  __TI_tls_init                  
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+118018a0  _args_main                     
+11801820  _c_int00                       
+11800000  _stack                         
+11801920  _system_post_cinit             
+11801940  _system_pre_init               
+11801960  abort                          
+ffffffff  binit                          
+11801440  exit                           
+118018e0  main                           
+11801780  memcpy                         
+11801520  memset                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_STATIC_BASE               
+00001000  __TI_STACK_SIZE                
+11800000  _stack                         
+11801000  PRUEnable                      
+11801000  __TI_STACK_END                 
+11801040  PRUDisable                     
+11801074  PRULoad                        
+11801148  PRURun                         
+11801178  PRUWaitForHalt                 
+118011e0  PSCModuleControl               
+11801440  exit                           
+11801520  memset                         
+11801600  __TI_auto_init_nobinit_nopinit 
+118016c0  __TI_tls_init                  
+11801780  memcpy                         
+11801820  _c_int00                       
+118018a0  _args_main                     
+118018e0  main                           
+11801920  _system_post_cinit             
+11801940  _system_pre_init               
+11801960  C$$EXIT                        
+11801960  abort                          
+11801980  __TI_decompress_none           
+118019a0  __TI_decompress_rle24          
+1180207c  __TI_cleanup_ptr               
+11802080  __TI_dtors_ptr                 
+11802084  __TI_enable_exit_profile_output
+11802098  __TI_Handler_Table_Base        
+118020a0  __TI_CINIT_Base                
+118020a0  __TI_Handler_Table_Limit       
+118020a8  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[39 symbols]
