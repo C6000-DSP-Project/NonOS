@@ -45,7 +45,7 @@ void PRUEnable(unsigned char PRUNum)
 void PRUDisable(unsigned char PRUNum)
 {
     // 禁用 PRU0 CYCLECNT 计数 | PRU 停止取指
-    HWREG(PRU_REGS(PRUNum) + PRU_CONTROL) &= ~(1 << 3) | (1 << 1);
+    HWREG(PRU_REGS(PRUNum) + PRU_CONTROL) &= ~((1 << 3) | (1 << 1));
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -24,8 +24,30 @@
  */
 #include "PRULoader.h"
 
-#include "LEDNixie_PRU_Code.h"
-#include "LEDNixie_PRU_Data.h"
+#include "PRU_Code.h"
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      宏定义
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 软件断点
+#define SW_BREAKPOINT     asm(" SWBP 0 ");
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+//      全局变量
+//
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+unsigned char *LEDNixieVal = (unsigned char *)0x80000000;  // 数码管值
+
+unsigned char SEGVal[16] =
+{
+    0xC0, 0xF9, 0xA4, 0xB0, 0x99,     // 0 1 2 3 4
+    0x92, 0x82, 0xF8, 0x80, 0x90,     // 5 6 7 8 9
+    0x88, 0x83, 0xC6, 0xA1, 0x86,     // A B C D E
+    0x8E                              // F
+};
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //
@@ -34,10 +56,26 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 void main()
 {
-    // 加载并运行 PRU0 程序
-    PRUEnable(0);
-    PRULoad(0, (unsigned int*)PRU_Code, (sizeof(PRU_Code) / sizeof(unsigned int)), (unsigned int*)PRU_Data, (sizeof(PRU_Data) / sizeof(unsigned int)));
-    PRURun(0);
+    // 停止 PRU 运行
+    PRUDisable(PRU0);
+
+    // 加载 PRU 程序
+    PRULoad(PRU0, (unsigned int *)PRU_Code, (sizeof(PRU_Code) / sizeof(unsigned int)), 0, 0);
+
+    // 开始 PRU 运行
+    PRURun(PRU0);
+
+    // 配置数码管显示值
+    LEDNixieVal[0] = SEGVal[0];
+    LEDNixieVal[1] = SEGVal[1];
+    LEDNixieVal[2] = SEGVal[2];
+    LEDNixieVal[3] = SEGVal[3];
+
+    // 软件断点
+    SW_BREAKPOINT;
+
+    // 暂停 PRU 运行(暂停运行后 CCS 才可以连接 PRU 核心)
+    PRUDisable(PRU0);
 
     for(;;)
     {
