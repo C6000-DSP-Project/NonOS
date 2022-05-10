@@ -1,0 +1,347 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Tue May 10 11:05:00 2022
+
+OUTPUT FILE NAME:   <ECAP_APWM.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 11802780
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              11800000   00040000  000044dc  0003bb24  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+11800000    11800000    00003260   00003260    r-x
+  11800000    11800000    00003260   00003260    r-x .text
+11803260    11803260    0000124c   00000000    rw-
+  11803260    11803260    00001000   00000000    rw- .stack
+  11804260    11804260    00000240   00000000    rw- .far
+  118044a0    118044a0    0000000c   00000000    rw- .fardata
+118044b0    118044b0    00000030   00000030    r--
+  118044b0    118044b0    00000030   00000030    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    11800000    00003260     
+                  11800000    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  11801aa0    00000700     drivers.lib : ecap.obj (.text)
+                  118021a0    000005e0     system_config.lib : interrupt.obj (.text)
+                  11802780    00000080     rts6740_elf.lib : boot.c.obj (.text:_c_int00)
+                  11802800    00000200     system_config.lib : intvecs.obj (.text)
+                  11802a00    00000160     drivers.lib : psc.obj (.text)
+                  11802b60    00000140     main.obj (.text)
+                  11802ca0    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  11802da0    000000e0                     : exit.c.obj (.text:exit)
+                  11802e80    000000e0                     : memset.c.obj (.text:memset)
+                  11802f60    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  11803020    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  118030e0    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  11803180    00000040                     : args_main.c.obj (.text:_args_main)
+                  118031c0    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  118031e0    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  11803200    00000020                     : exit.c.obj (.text:abort)
+                  11803220    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  11803240    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    11803260    00001000     UNINITIALIZED
+                  11803260    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  11803268    00000ff8     --HOLE--
+
+.cinit     0    118044b0    00000030     
+                  118044b0    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  118044bd    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  118044c8    00000008     (__TI_handler_table)
+                  118044d0    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    11800000    00000000     UNINITIALIZED
+
+.fardata   0    118044a0    0000000c     UNINITIALIZED
+                  118044a0    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+.far       0    11804260    00000240     UNINITIALIZED
+                  11804260    00000240     system_config.lib : interrupt.obj (.far)
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
+    .\
+       main.obj                     320     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       320     0         0      
+                                                             
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       ecap.obj                     1792    0         0      
+       psc.obj                      352     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       2144    0         0      
+                                                             
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576    
+       intvecs.obj                  512     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       8832    0         576    
+                                                             
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288     0         0      
+       exit.c.obj                   256     0         12     
+       memset.c.obj                 224     0         0      
+       autoinit.c.obj               192     0         0      
+       tls.c.obj                    192     0         0      
+       memcpy64.asm.obj             160     0         0      
+       boot.c.obj                   128     0         0      
+       args_main.c.obj              64      0         0      
+       copy_decompress_none.c.obj   32      0         0      
+       pre_init.c.obj               32      0         0      
+       startup.c.obj                32      0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1600    0         12     
+                                                             
+       Stack:                       0       0         4096   
+       Linker Generated:            0       48        0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 12896   48        4684   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 118044d0 records: 2, size/record: 8, table size: 16
+	.fardata: load addr=118044b0, load size=0000000d bytes, run addr=118044a0, run size=0000000c bytes, compression=rle
+	.far: load addr=118044bd, load size=0000000b bytes, run addr=11804260, run size=00000240 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 118044c8 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+11803200  C$$EXIT                        
+11801f30  ECAPAPWMCaptureConfig          
+11801e10  ECAPAPWMPolarityConfig         
+11801f54  ECAPAPWMShadowCaptureConfig    
+11801c48  ECAPCapeEvtPolarityConfig      
+11801cd4  ECAPCaptureEvtCntrRstConfig    
+11801b44  ECAPCaptureLoadingDisable      
+11801b20  ECAPCaptureLoadingEnable       
+11801ac0  ECAPClockDisable               
+11801b00  ECAPClockDisableStatusGet      
+11801aa0  ECAPClockEnable                
+11801ae0  ECAPClockEnableStatusGet       
+11801d64  ECAPContinousModeConfig        
+11801c2c  ECAPCounterConfig              
+11801e60  ECAPCounterControl             
+11801f80  ECAPCounterPhaseValConfig      
+11801fa0  ECAPGlobalIntEnable            
+11802c04  ECAPInit                       
+11801ff4  ECAPIntDisable                 
+11801fc8  ECAPIntEnable                  
+11802020  ECAPIntStatus                  
+11802048  ECAPIntStatusClear             
+11802b8c  ECAPIsr                        
+11801d8c  ECAPOneShotModeConfig          
+11801de8  ECAPOneShotREARM               
+11801bc4  ECAPOperatingModeSelect        
+1180206c  ECAPPeripheralIdGet            
+11801b74  ECAPPrescaleConfig             
+11801eac  ECAPSyncInOutSelect            
+11801c10  ECAPTimeStampRead              
+11802110  EcapContextRestore             
+11802088  EcapContextSave                
+118025f8  ExcCombineAdd                  
+11802640  ExcCombineRemove               
+118025d8  ExcGlobalEnable                
+118021a0  IntDSPINTCInit                 
+11802550  IntDisable                     
+11802520  IntEnable                      
+11802318  IntEventClear                  
+11802454  IntEventCombineAdd             
+11802350  IntEventCombineInit            
+118024f8  IntEventCombineRegister        
+118024a8  IntEventCombineRemove          
+1180225c  IntEventMap                    
+118022e4  IntEventSet                    
+118025ac  IntGlobalDisable               
+11802598  IntGlobalEnable                
+118025c0  IntGlobalRestore               
+11802210  IntRegister                    
+11802584  IntReset                       
+11802234  IntUnRegister                  
+11802bcc  InterruptInit                  
+11802a00  PSCModuleControl               
+118044d0  __TI_CINIT_Base                
+118044e0  __TI_CINIT_Limit               
+118044c8  __TI_Handler_Table_Base        
+118044d0  __TI_Handler_Table_Limit       
+11804260  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+00000000  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+11802f60  __TI_auto_init_nobinit_nopinit 
+118044a0  __TI_cleanup_ptr               
+11803220  __TI_decompress_none           
+11803240  __TI_decompress_rle24          
+118044a4  __TI_dtors_ptr                 
+118044a8  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+11803020  __TI_tls_init                  
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+11803180  _args_main                     
+11800ff8  _c674x_mask_int10_isr          
+118011c0  _c674x_mask_int11_isr          
+11801384  _c674x_mask_int12_isr          
+11801548  _c674x_mask_int13_isr          
+11801710  _c674x_mask_int14_isr          
+118018d8  _c674x_mask_int15_isr          
+11800550  _c674x_mask_int4_isr           
+11800718  _c674x_mask_int5_isr           
+118008e0  _c674x_mask_int6_isr           
+11800aa4  _c674x_mask_int7_isr           
+11800c68  _c674x_mask_int8_isr           
+11800e30  _c674x_mask_int9_isr           
+11800000  _c674x_nmi_isr                 
+118001c4  _c674x_rsvd_int2_isr           
+11800388  _c674x_rsvd_int3_isr           
+11802780  _c_int00                       
+11802800  _intcVectorTable               
+11803260  _stack                         
+118031c0  _system_post_cinit             
+118031e0  _system_pre_init               
+11803200  abort                          
+ffffffff  binit                          
+11802da0  exit                           
+11802c6c  main                           
+118030e0  memcpy                         
+11802e80  memset                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_STATIC_BASE               
+00001000  __TI_STACK_SIZE                
+11800000  _c674x_nmi_isr                 
+118001c4  _c674x_rsvd_int2_isr           
+11800388  _c674x_rsvd_int3_isr           
+11800550  _c674x_mask_int4_isr           
+11800718  _c674x_mask_int5_isr           
+118008e0  _c674x_mask_int6_isr           
+11800aa4  _c674x_mask_int7_isr           
+11800c68  _c674x_mask_int8_isr           
+11800e30  _c674x_mask_int9_isr           
+11800ff8  _c674x_mask_int10_isr          
+118011c0  _c674x_mask_int11_isr          
+11801384  _c674x_mask_int12_isr          
+11801548  _c674x_mask_int13_isr          
+11801710  _c674x_mask_int14_isr          
+118018d8  _c674x_mask_int15_isr          
+11801aa0  ECAPClockEnable                
+11801ac0  ECAPClockDisable               
+11801ae0  ECAPClockEnableStatusGet       
+11801b00  ECAPClockDisableStatusGet      
+11801b20  ECAPCaptureLoadingEnable       
+11801b44  ECAPCaptureLoadingDisable      
+11801b74  ECAPPrescaleConfig             
+11801bc4  ECAPOperatingModeSelect        
+11801c10  ECAPTimeStampRead              
+11801c2c  ECAPCounterConfig              
+11801c48  ECAPCapeEvtPolarityConfig      
+11801cd4  ECAPCaptureEvtCntrRstConfig    
+11801d64  ECAPContinousModeConfig        
+11801d8c  ECAPOneShotModeConfig          
+11801de8  ECAPOneShotREARM               
+11801e10  ECAPAPWMPolarityConfig         
+11801e60  ECAPCounterControl             
+11801eac  ECAPSyncInOutSelect            
+11801f30  ECAPAPWMCaptureConfig          
+11801f54  ECAPAPWMShadowCaptureConfig    
+11801f80  ECAPCounterPhaseValConfig      
+11801fa0  ECAPGlobalIntEnable            
+11801fc8  ECAPIntEnable                  
+11801ff4  ECAPIntDisable                 
+11802020  ECAPIntStatus                  
+11802048  ECAPIntStatusClear             
+1180206c  ECAPPeripheralIdGet            
+11802088  EcapContextSave                
+11802110  EcapContextRestore             
+118021a0  IntDSPINTCInit                 
+11802210  IntRegister                    
+11802234  IntUnRegister                  
+1180225c  IntEventMap                    
+118022e4  IntEventSet                    
+11802318  IntEventClear                  
+11802350  IntEventCombineInit            
+11802454  IntEventCombineAdd             
+118024a8  IntEventCombineRemove          
+118024f8  IntEventCombineRegister        
+11802520  IntEnable                      
+11802550  IntDisable                     
+11802584  IntReset                       
+11802598  IntGlobalEnable                
+118025ac  IntGlobalDisable               
+118025c0  IntGlobalRestore               
+118025d8  ExcGlobalEnable                
+118025f8  ExcCombineAdd                  
+11802640  ExcCombineRemove               
+11802780  _c_int00                       
+11802800  _intcVectorTable               
+11802a00  PSCModuleControl               
+11802b8c  ECAPIsr                        
+11802bcc  InterruptInit                  
+11802c04  ECAPInit                       
+11802c6c  main                           
+11802da0  exit                           
+11802e80  memset                         
+11802f60  __TI_auto_init_nobinit_nopinit 
+11803020  __TI_tls_init                  
+118030e0  memcpy                         
+11803180  _args_main                     
+118031c0  _system_post_cinit             
+118031e0  _system_pre_init               
+11803200  C$$EXIT                        
+11803200  abort                          
+11803220  __TI_decompress_none           
+11803240  __TI_decompress_rle24          
+11803260  _stack                         
+11804260  __TI_STACK_END                 
+118044a0  __TI_cleanup_ptr               
+118044a4  __TI_dtors_ptr                 
+118044a8  __TI_enable_exit_profile_output
+118044c8  __TI_Handler_Table_Base        
+118044d0  __TI_CINIT_Base                
+118044d0  __TI_Handler_Table_Limit       
+118044e0  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[101 symbols]
