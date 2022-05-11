@@ -1,0 +1,405 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Wed May 11 11:22:25 2022
+
+OUTPUT FILE NAME:   <EHRPWM.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 11803380
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              11800000   00040000  00004efc  0003b104  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+11800000    11800000    00003c80   00003c80    r-x
+  11800000    11800000    00003c80   00003c80    r-x .text
+11803c80    11803c80    0000124c   00000000    rw-
+  11803c80    11803c80    00001000   00000000    rw- .stack
+  11804c80    11804c80    00000240   00000000    rw- .far
+  11804ec0    11804ec0    0000000c   00000000    rw- .fardata
+11804ed0    11804ed0    00000030   00000030    r--
+  11804ed0    11804ed0    00000030   00000030    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    11800000    00003c80     
+                  11800000    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  11801aa0    00000ec0     drivers.lib : ehrpwm.obj (.text)
+                  11802960    000005e0     system_config.lib : interrupt.obj (.text)
+                  11802f40    000002e0     main.obj (.text)
+                  11803220    00000160     drivers.lib : psc.obj (.text)
+                  11803380    00000080     rts6740_elf.lib : boot.c.obj (.text:_c_int00)
+                  11803400    00000200     system_config.lib : intvecs.obj (.text)
+                  11803600    00000100     rts6740_elf.lib : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  11803700    000000e0                     : exit.c.obj (.text:exit)
+                  118037e0    000000e0                     : memset.c.obj (.text:memset)
+                  118038c0    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  11803980    000000c0                     : divu.asm.obj (.text:__divu)
+                  11803a40    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  11803b00    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  11803ba0    00000040                     : args_main.c.obj (.text:_args_main)
+                  11803be0    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  11803c00    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  11803c20    00000020                     : exit.c.obj (.text:abort)
+                  11803c40    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  11803c60    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    11803c80    00001000     UNINITIALIZED
+                  11803c80    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  11803c88    00000ff8     --HOLE--
+
+.cinit     0    11804ed0    00000030     
+                  11804ed0    0000000d     (.cinit..fardata.load) [load image, compression = rle]
+                  11804edd    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  11804ee8    00000008     (__TI_handler_table)
+                  11804ef0    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    11800000    00000000     UNINITIALIZED
+
+.fardata   0    11804ec0    0000000c     UNINITIALIZED
+                  11804ec0    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+
+.far       0    11804c80    00000240     UNINITIALIZED
+                  11804c80    00000240     system_config.lib : interrupt.obj (.far)
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
+    .\
+       main.obj                     736     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       736     0         0      
+                                                             
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       ehrpwm.obj                   3776    0         0      
+       psc.obj                      352     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       4128    0         0      
+                                                             
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576    
+       intvecs.obj                  512     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       8832    0         576    
+                                                             
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       copy_decompress_rle.c.obj    288     0         0      
+       exit.c.obj                   256     0         12     
+       memset.c.obj                 224     0         0      
+       autoinit.c.obj               192     0         0      
+       divu.asm.obj                 192     0         0      
+       tls.c.obj                    192     0         0      
+       memcpy64.asm.obj             160     0         0      
+       boot.c.obj                   128     0         0      
+       args_main.c.obj              64      0         0      
+       copy_decompress_none.c.obj   32      0         0      
+       pre_init.c.obj               32      0         0      
+       startup.c.obj                32      0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       1792    0         12     
+                                                             
+       Stack:                       0       0         4096   
+       Linker Generated:            0       48        0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 15488   48        4684   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 11804ef0 records: 2, size/record: 8, table size: 16
+	.fardata: load addr=11804ed0, load size=0000000d bytes, run addr=11804ec0, run size=0000000c bytes, compression=rle
+	.far: load addr=11804edd, load size=0000000b bytes, run addr=11804c80, run size=00000240 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 11804ee8 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+11803c20  C$$EXIT                        
+118020c4  EHRPWMAQContSWForceOnA         
+11802120  EHRPWMAQContSWForceOnB         
+11802388  EHRPWMChopperDisable           
+11802360  EHRPWMChopperEnable            
+118028f0  EHRPWMClockDisable             
+1180292c  EHRPWMClockDisableStatusGet    
+118028d4  EHRPWMClockEnable              
+1180290c  EHRPWMClockEnableStatusGet     
+11802848  EHRPWMConfigHR                 
+11801f00  EHRPWMConfigureAQActionOnA     
+11801fb4  EHRPWMConfigureAQActionOnB     
+11802290  EHRPWMConfigureChopperDuty     
+118022d0  EHRPWMConfigureChopperFreq     
+11802320  EHRPWMConfigureChopperOSPW     
+11802258  EHRPWMDBConfigureFED           
+11802220  EHRPWMDBConfigureRED           
+118021ec  EHRPWMDBOutput                 
+118021b8  EHRPWMDBPolaritySelect         
+11802180  EHRPWMDBSourceSelect           
+11802700  EHRPWMETEventCount             
+11802748  EHRPWMETIntClear               
+11802640  EHRPWMETIntDisable             
+11802668  EHRPWMETIntEnable              
+118026c8  EHRPWMETIntPrescale            
+11802770  EHRPWMETIntSWForce             
+11802690  EHRPWMETIntSourceSelect        
+11802724  EHRPWMETIntStatus              
+118028ac  EHRPWMHRDisable                
+11803058  EHRPWMInit                     
+11801da4  EHRPWMLoadCMPA                 
+118027e0  EHRPWMLoadCMPAHR               
+11801e4c  EHRPWMLoadCMPB                 
+118027a0  EHRPWMLoadTBPHSHR              
+11801b6c  EHRPWMPWMOpFreqSet             
+11801d34  EHRPWMReadTBCount              
+11802070  EHRPWMSWForceA                 
+118020a0  EHRPWMSWForceB                 
+11801ce4  EHRPWMSyncOutModeSet           
+11801d74  EHRPWMTBClearStatus            
+11801c08  EHRPWMTBEmulationModeSet       
+11801d50  EHRPWMTBStatusGet              
+118025d0  EHRPWMTZFlagClear              
+118025ac  EHRPWMTZFlagGet                
+11802474  EHRPWMTZForceAOnTrip           
+118024ac  EHRPWMTZForceBOnTrip           
+1180254c  EHRPWMTZIntDisable             
+118024e8  EHRPWMTZIntEnable              
+118025f0  EHRPWMTZSWFrcEvent             
+1180240c  EHRPWMTZTripEventDisable       
+118023b0  EHRPWMTZTripEventEnable        
+11801aa0  EHRPWMTimebaseClkConfig        
+11801ca8  EHRPWMTimebaseSyncDisable      
+11801c4c  EHRPWMTimebaseSyncEnable       
+11801cc8  EHRPWMTriggerSWSync            
+11801d18  EHRPWMWriteTBCount             
+11802db8  ExcCombineAdd                  
+11802e00  ExcCombineRemove               
+11802d98  ExcGlobalEnable                
+11802960  IntDSPINTCInit                 
+11802d10  IntDisable                     
+11802ce0  IntEnable                      
+11802ad8  IntEventClear                  
+11802c14  IntEventCombineAdd             
+11802b10  IntEventCombineInit            
+11802cb8  IntEventCombineRegister        
+11802c68  IntEventCombineRemove          
+11802a1c  IntEventMap                    
+11802aa4  IntEventSet                    
+11802d6c  IntGlobalDisable               
+11802d58  IntGlobalEnable                
+11802d80  IntGlobalRestore               
+118029d0  IntRegister                    
+11802d44  IntReset                       
+118029f4  IntUnRegister                  
+11803000  InterruptInit                  
+11803220  PSCModuleControl               
+11802fc4  PWMEventIsr                    
+11802fe0  PWMTZIsr                       
+11804ef0  __TI_CINIT_Base                
+11804f00  __TI_CINIT_Limit               
+11804ee8  __TI_Handler_Table_Base        
+11804ef0  __TI_Handler_Table_Limit       
+11804c80  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+00000000  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+118038c0  __TI_auto_init_nobinit_nopinit 
+11804ec0  __TI_cleanup_ptr               
+11803c40  __TI_decompress_none           
+11803c60  __TI_decompress_rle24          
+11804ec4  __TI_dtors_ptr                 
+11804ec8  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+11803a40  __TI_tls_init                  
+ffffffff  __binit__                      
+11803980  __c6xabi_divu                  
+ffffffff  __c_args__                     
+11803980  __divu                         
+11803ba0  _args_main                     
+11800ff8  _c674x_mask_int10_isr          
+118011c0  _c674x_mask_int11_isr          
+11801384  _c674x_mask_int12_isr          
+11801548  _c674x_mask_int13_isr          
+11801710  _c674x_mask_int14_isr          
+118018d8  _c674x_mask_int15_isr          
+11800550  _c674x_mask_int4_isr           
+11800718  _c674x_mask_int5_isr           
+118008e0  _c674x_mask_int6_isr           
+11800aa4  _c674x_mask_int7_isr           
+11800c68  _c674x_mask_int8_isr           
+11800e30  _c674x_mask_int9_isr           
+11800000  _c674x_nmi_isr                 
+118001c4  _c674x_rsvd_int2_isr           
+11800388  _c674x_rsvd_int3_isr           
+11803380  _c_int00                       
+11803400  _intcVectorTable               
+11803c80  _stack                         
+11803be0  _system_post_cinit             
+11803c00  _system_pre_init               
+11803c20  abort                          
+ffffffff  binit                          
+11803700  exit                           
+118031e8  main                           
+11803b00  memcpy                         
+118037e0  memset                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_STATIC_BASE               
+00001000  __TI_STACK_SIZE                
+11800000  _c674x_nmi_isr                 
+118001c4  _c674x_rsvd_int2_isr           
+11800388  _c674x_rsvd_int3_isr           
+11800550  _c674x_mask_int4_isr           
+11800718  _c674x_mask_int5_isr           
+118008e0  _c674x_mask_int6_isr           
+11800aa4  _c674x_mask_int7_isr           
+11800c68  _c674x_mask_int8_isr           
+11800e30  _c674x_mask_int9_isr           
+11800ff8  _c674x_mask_int10_isr          
+118011c0  _c674x_mask_int11_isr          
+11801384  _c674x_mask_int12_isr          
+11801548  _c674x_mask_int13_isr          
+11801710  _c674x_mask_int14_isr          
+118018d8  _c674x_mask_int15_isr          
+11801aa0  EHRPWMTimebaseClkConfig        
+11801b6c  EHRPWMPWMOpFreqSet             
+11801c08  EHRPWMTBEmulationModeSet       
+11801c4c  EHRPWMTimebaseSyncEnable       
+11801ca8  EHRPWMTimebaseSyncDisable      
+11801cc8  EHRPWMTriggerSWSync            
+11801ce4  EHRPWMSyncOutModeSet           
+11801d18  EHRPWMWriteTBCount             
+11801d34  EHRPWMReadTBCount              
+11801d50  EHRPWMTBStatusGet              
+11801d74  EHRPWMTBClearStatus            
+11801da4  EHRPWMLoadCMPA                 
+11801e4c  EHRPWMLoadCMPB                 
+11801f00  EHRPWMConfigureAQActionOnA     
+11801fb4  EHRPWMConfigureAQActionOnB     
+11802070  EHRPWMSWForceA                 
+118020a0  EHRPWMSWForceB                 
+118020c4  EHRPWMAQContSWForceOnA         
+11802120  EHRPWMAQContSWForceOnB         
+11802180  EHRPWMDBSourceSelect           
+118021b8  EHRPWMDBPolaritySelect         
+118021ec  EHRPWMDBOutput                 
+11802220  EHRPWMDBConfigureRED           
+11802258  EHRPWMDBConfigureFED           
+11802290  EHRPWMConfigureChopperDuty     
+118022d0  EHRPWMConfigureChopperFreq     
+11802320  EHRPWMConfigureChopperOSPW     
+11802360  EHRPWMChopperEnable            
+11802388  EHRPWMChopperDisable           
+118023b0  EHRPWMTZTripEventEnable        
+1180240c  EHRPWMTZTripEventDisable       
+11802474  EHRPWMTZForceAOnTrip           
+118024ac  EHRPWMTZForceBOnTrip           
+118024e8  EHRPWMTZIntEnable              
+1180254c  EHRPWMTZIntDisable             
+118025ac  EHRPWMTZFlagGet                
+118025d0  EHRPWMTZFlagClear              
+118025f0  EHRPWMTZSWFrcEvent             
+11802640  EHRPWMETIntDisable             
+11802668  EHRPWMETIntEnable              
+11802690  EHRPWMETIntSourceSelect        
+118026c8  EHRPWMETIntPrescale            
+11802700  EHRPWMETEventCount             
+11802724  EHRPWMETIntStatus              
+11802748  EHRPWMETIntClear               
+11802770  EHRPWMETIntSWForce             
+118027a0  EHRPWMLoadTBPHSHR              
+118027e0  EHRPWMLoadCMPAHR               
+11802848  EHRPWMConfigHR                 
+118028ac  EHRPWMHRDisable                
+118028d4  EHRPWMClockEnable              
+118028f0  EHRPWMClockDisable             
+1180290c  EHRPWMClockEnableStatusGet     
+1180292c  EHRPWMClockDisableStatusGet    
+11802960  IntDSPINTCInit                 
+118029d0  IntRegister                    
+118029f4  IntUnRegister                  
+11802a1c  IntEventMap                    
+11802aa4  IntEventSet                    
+11802ad8  IntEventClear                  
+11802b10  IntEventCombineInit            
+11802c14  IntEventCombineAdd             
+11802c68  IntEventCombineRemove          
+11802cb8  IntEventCombineRegister        
+11802ce0  IntEnable                      
+11802d10  IntDisable                     
+11802d44  IntReset                       
+11802d58  IntGlobalEnable                
+11802d6c  IntGlobalDisable               
+11802d80  IntGlobalRestore               
+11802d98  ExcGlobalEnable                
+11802db8  ExcCombineAdd                  
+11802e00  ExcCombineRemove               
+11802fc4  PWMEventIsr                    
+11802fe0  PWMTZIsr                       
+11803000  InterruptInit                  
+11803058  EHRPWMInit                     
+118031e8  main                           
+11803220  PSCModuleControl               
+11803380  _c_int00                       
+11803400  _intcVectorTable               
+11803700  exit                           
+118037e0  memset                         
+118038c0  __TI_auto_init_nobinit_nopinit 
+11803980  __c6xabi_divu                  
+11803980  __divu                         
+11803a40  __TI_tls_init                  
+11803b00  memcpy                         
+11803ba0  _args_main                     
+11803be0  _system_post_cinit             
+11803c00  _system_pre_init               
+11803c20  C$$EXIT                        
+11803c20  abort                          
+11803c40  __TI_decompress_none           
+11803c60  __TI_decompress_rle24          
+11803c80  _stack                         
+11804c80  __TI_STACK_END                 
+11804ec0  __TI_cleanup_ptr               
+11804ec4  __TI_dtors_ptr                 
+11804ec8  __TI_enable_exit_profile_output
+11804ee8  __TI_Handler_Table_Base        
+11804ef0  __TI_CINIT_Base                
+11804ef0  __TI_Handler_Table_Limit       
+11804f00  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[129 symbols]
