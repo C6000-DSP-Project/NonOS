@@ -27,7 +27,3 @@ void SoftSPIInit();
 void SoftSPIWrite(unsigned char data);
 
 #endif
-
-
-
-
