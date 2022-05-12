@@ -1,0 +1,594 @@
+******************************************************************************
+               TMS320C6x Linker PC v8.3.12                     
+******************************************************************************
+>> Linked Fri May 13 00:01:10 2022
+
+OUTPUT FILE NAME:   <SPI_LCD.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 11809020
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  DSPL2RAM              11800000   00040000  00011010  0002eff0  RWIX
+  SHRAM                 80000000   00020000  00000000  00020000  RWIX
+  DDR2                  c0000000   08000000  00000000  08000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+11800000    11800000    0000fc1c   0000fc1c    r-x
+  11800000    11800000    000094e0   000094e0    r-x .text
+  118094e0    118094e0    0000673c   0000673c    r-- .const
+1180fc1c    1180fc1c    00000004   00000000    rw-
+  1180fc1c    1180fc1c    00000004   00000000    rw- .neardata
+1180fc20    1180fc20    000012d8   00000000    rw-
+  1180fc20    1180fc20    00001000   00000000    rw- .stack
+  11810c20    11810c20    00000240   00000000    rw- .far
+  11810e60    11810e60    00000098   00000000    rw- .fardata
+11810ef8    11810ef8    00000118   00000118    r--
+  11810ef8    11810ef8    00000048   00000048    r-- .switch
+  11810f40    11810f40    000000d0   000000d0    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    11800000    000094e0     
+                  11800000    000020c0     rts6740_elf.lib : _printfi.c.obj (.text:__TI_printfi)
+                  118020c0    00001aa0     system_config.lib : interrupt.obj (.text:retain)
+                  11803b60    00000f20     LCD.obj (.text)
+                  11804a80    00000860     drivers.lib : timer.obj (.text)
+                  118052e0    00000660     rts6740_elf.lib : _printfi.c.obj (.text:_pconv_a)
+                  11805940    00000600                     : divd.c.obj (.text:__c6xabi_divd)
+                  11805f40    000005e0     system_config.lib : interrupt.obj (.text)
+                  11806520    000005c0     drivers.lib : gpio.obj (.text)
+                  11806ae0    00000400     rts6740_elf.lib : _printfi.c.obj (.text:_pconv_g)
+                  11806ee0    000002a0                     : _printfi.c.obj (.text:_pconv_e)
+                  11807180    000002a0                     : _printfi.c.obj (.text:fcvt)
+                  11807420    00000260                     : imath64.c.obj (.text:__c6xabi_divull)
+                  11807680    00000200                     : _printfi.c.obj (.text:_ltostr)
+                  11807880    000001c0                     : imath40.c.obj (.text:__c6xabi_divul)
+                  11807a40    000001c0                     : frexp.c.obj (.text:frexp)
+                  11807c00    00000200     system_config.lib : intvecs.obj (.text)
+                  11807e00    000001c0     rts6740_elf.lib : ldexp.c.obj (.text:ldexp)
+                  11807fc0    000001c0     sysdelay.obj (.text)
+                  11808180    000001a0     main.obj (.text)
+                  11808320    00000180     SoftSPI.obj (.text)
+                  118084a0    00000120     rts6740_elf.lib : _printfi.c.obj (.text:_pconv_f)
+                  118085c0    00000100                     : copy_decompress_rle.c.obj (.text:__TI_decompress_rle_core)
+                  118086c0    00000100                     : _printfi.c.obj (.text:_mcpy)
+                  118087c0    00000100                     : atoi.c.obj (.text:atoi)
+                  118088c0    000000e0                     : _ltoa.c.obj (.text:__TI_ltoa)
+                  118089a0    000000e0                     : exit.c.obj (.text:exit)
+                  11808a80    000000e0                     : memset.c.obj (.text:memset)
+                  11808b60    000000c0                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  11808c20    000000c0                     : divu.asm.obj (.text:__divu)
+                  11808ce0    000000c0                     : remi.asm.obj (.text:__remi)
+                  11808da0    000000c0                     : tls.c.obj (.text:tls:init:__TI_tls_init)
+                  11808e60    000000a0                     : _printfi.c.obj (.text:_ecpy)
+                  11808f00    000000a0                     : memcpy64.asm.obj (.text:memcpy)
+                  11808fa0    00000080                     : llshift.c.obj (.text:__c6xabi_llshl)
+                  11809020    00000080                     : boot.c.obj (.text:_c_int00)
+                  118090a0    00000060                     : llshift.c.obj (.text:__c6xabi_llshru)
+                  11809100    00000060                     : imath64.c.obj (.text:_subcull)
+                  11809160    00000060                     : memccpy.c.obj (.text:memccpy)
+                  118091c0    00000060                     : sprintf.c.obj (.text:sprintf)
+                  11809220    00000040                     : frcmpyd_div.c.obj (.text:__TI_frcmpyd_div)
+                  11809260    00000040                     : isinf.c.obj (.text:__c6xabi_isinf)
+                  118092a0    00000040                     : _printfi.c.obj (.text:__c6xabi_isnan)
+                  118092e0    00000040                     : args_main.c.obj (.text:_args_main)
+                  11809320    00000040                     : sprintf.c.obj (.text:_outs)
+                  11809360    00000040                     : wcslen.c.obj (.text:wcslen)
+                  118093a0    00000020                     : errno.c.obj (.text:__c6xabi_errno_addr)
+                  118093c0    00000020                     : push.asm.obj (.text:__pop_rts)
+                  118093e0    00000020                     : push.asm.obj (.text:__push_rts)
+                  11809400    00000020                     : sprintf.c.obj (.text:_outc)
+                  11809420    00000020                     : signbit.c.obj (.text:_signbit)
+                  11809440    00000020                     : startup.c.obj (.text:_system_post_cinit)
+                  11809460    00000020                     : pre_init.c.obj (.text:_system_pre_init)
+                  11809480    00000020                     : exit.c.obj (.text:abort)
+                  118094a0    00000020                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  118094c0    00000020                     : copy_decompress_rle.c.obj (.text:decompress:rle24:__TI_decompress_rle24)
+
+.stack     0    1180fc20    00001000     UNINITIALIZED
+                  1180fc20    00000008     rts6740_elf.lib : boot.c.obj (.stack)
+                  1180fc28    00000ff8     --HOLE--
+
+.const     0    118094e0    0000673c     
+                  118094e0    00003200     main.obj (.const:.string:gImage_Rabbit)
+                  1180c6e0    000017c0     Font.obj (.const:ASCII32)
+                  1180dea0    000011d0     Font.obj (.const:ASCII24)
+                  1180f070    000005f0     Font.obj (.const:ASCII16)
+                  1180f660    00000474     Font.obj (.const:ASCII12)
+                  1180fad4    00000004     --HOLE-- [fill = 0]
+                  1180fad8    00000101     rts6740_elf.lib : ctype.c.obj (.const:.string:_ctypes_)
+                  1180fbd9    00000003     --HOLE-- [fill = 0]
+                  1180fbdc    00000024                     : _printfi.c.obj (.const:.string)
+                  1180fc00    0000001c     main.obj (.const:.string)
+
+.switch    0    11810ef8    00000048     
+                  11810ef8    00000038     rts6740_elf.lib : _printfi.c.obj (.switch:__TI_printfi)
+                  11810f30    00000010     drivers.lib : gpio.obj (.switch:GPIOIntTypeSet)
+
+.neardata 
+*          0    1180fc1c    00000004     UNINITIALIZED
+                  1180fc1c    00000004     sysdelay.obj (.neardata)
+
+.rodata    0    1180fc20    00000000     UNINITIALIZED
+
+.bss       0    1180fc20    00000000     UNINITIALIZED
+
+.far       0    11810c20    00000240     UNINITIALIZED
+                  11810c20    00000240     system_config.lib : interrupt.obj (.far)
+
+.cinit     0    11810f40    000000d0     
+                  11810f40    00000095     (.cinit..fardata.load) [load image, compression = rle]
+                  11810fd5    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  11810fe0    0000000a     (.cinit..neardata.load) [load image, compression = rle]
+                  11810fea    00000002     --HOLE-- [fill = 0]
+                  11810fec    00000008     (__TI_handler_table)
+                  11810ff4    00000004     --HOLE-- [fill = 0]
+                  11810ff8    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    11800000    00000000     UNINITIALIZED
+
+.fardata   0    11810e60    00000098     UNINITIALIZED
+                  11810e60    00000080     Font.obj (.fardata:FONT16)
+                  11810ee0    0000000c     rts6740_elf.lib : exit.c.obj (.fardata)
+                  11810eec    00000004                     : errno.c.obj (.fardata)
+                  11810ef0    00000008     Font.obj (.fardata:FontIndex)
+
+MODULE SUMMARY
+
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
+    .\
+       Font.obj                     0       13300     136    
+       main.obj                     416     12828     0      
+       LCD.obj                      3872    0         0      
+       sysdelay.obj                 448     0         4      
+       SoftSPI.obj                  384     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       5120    26128     140    
+                                                             
+    ../../Library/StarterWare/Drivers/Debug/drivers.lib
+       timer.obj                    2144    0         0      
+       gpio.obj                     1472    16        0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       3616    16        0      
+                                                             
+    ../../Library/StarterWare/SystemConfig/Debug/system_config.lib
+       interrupt.obj                8320    0         576    
+       intvecs.obj                  512     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       8832    0         576    
+                                                             
+    C:\ti\ti-cgt-c6000_8.3.12\lib\rts6740_elf.lib
+       _printfi.c.obj               13664   92        0      
+       divd.c.obj                   1536    0         0      
+       imath64.c.obj                704     0         0      
+       frexp.c.obj                  448     0         0      
+       imath40.c.obj                448     0         0      
+       ldexp.c.obj                  448     0         0      
+       copy_decompress_rle.c.obj    288     0         0      
+       exit.c.obj                   256     0         12     
+       ctype.c.obj                  0       257       0      
+       atoi.c.obj                   256     0         0      
+       _ltoa.c.obj                  224     0         0      
+       llshift.c.obj                224     0         0      
+       memset.c.obj                 224     0         0      
+       autoinit.c.obj               192     0         0      
+       divu.asm.obj                 192     0         0      
+       remi.asm.obj                 192     0         0      
+       sprintf.c.obj                192     0         0      
+       tls.c.obj                    192     0         0      
+       memcpy64.asm.obj             160     0         0      
+       boot.c.obj                   128     0         0      
+       memccpy.c.obj                96      0         0      
+       args_main.c.obj              64      0         0      
+       frcmpyd_div.c.obj            64      0         0      
+       isinf.c.obj                  64      0         0      
+       push.asm.obj                 64      0         0      
+       wcslen.c.obj                 64      0         0      
+       errno.c.obj                  32      0         4      
+       copy_decompress_none.c.obj   32      0         0      
+       pre_init.c.obj               32      0         0      
+       signbit.c.obj                32      0         0      
+       startup.c.obj                32      0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       20544   349       16     
+                                                             
+       Stack:                       0       0         4096   
+       Linker Generated:            0       202       0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 38112   26695     4828   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 11810ff8 records: 3, size/record: 8, table size: 24
+	.fardata: load addr=11810f40, load size=00000095 bytes, run addr=11810e60, run size=00000098 bytes, compression=rle
+	.far: load addr=11810fd5, load size=0000000b bytes, run addr=11810c20, run size=00000240 bytes, compression=rle
+	.neardata: load addr=11810fe0, load size=0000000a bytes, run addr=1180fc1c, run size=00000004 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 11810fec records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+1180f660  ASCII12                        
+1180f070  ASCII16                        
+1180dea0  ASCII24                        
+1180c6e0  ASCII32                        
+11809480  C$$EXIT                        
+11806398  ExcCombineAdd                  
+118063e0  ExcCombineRemove               
+11806378  ExcGlobalEnable                
+11810e60  FONT16                         
+11810ef0  FontIndex                      
+118069f4  GPIOBankIntDisable             
+118069c8  GPIOBankIntEnable              
+11806a24  GPIOBankPinsWrite              
+118065c0  GPIODirModeGet                 
+11806520  GPIODirModeSet                 
+11806880  GPIOIntTypeGet                 
+1180670c  GPIOIntTypeSet                 
+11806978  GPIOPinIntClear                
+11806910  GPIOPinIntStatus               
+118066a8  GPIOPinRead                    
+11806624  GPIOPinWrite                   
+11805f40  IntDSPINTCInit                 
+118062f0  IntDisable                     
+118062c0  IntEnable                      
+118060b8  IntEventClear                  
+118061f4  IntEventCombineAdd             
+118060f0  IntEventCombineInit            
+11806298  IntEventCombineRegister        
+11806248  IntEventCombineRemove          
+11805ffc  IntEventMap                    
+11806084  IntEventSet                    
+1180634c  IntGlobalDisable               
+11806338  IntGlobalEnable                
+11806360  IntGlobalRestore               
+11805fb0  IntRegister                    
+11806324  IntReset                       
+11805fd4  IntUnRegister                  
+11808180  InterruptInit                  
+11803c80  LCDAddressSet                  
+1180430c  LCDCharDraw                    
+11804068  LCDChineseDraw                 
+11803f24  LCDCircleDraw                  
+11803cd0  LCDFill                        
+11804744  LCDInit                        
+11803d80  LCDLineDraw                    
+1180466c  LCDPictureDraw                 
+11803d58  LCDPointDraw                   
+11803ec4  LCDRectangleDraw               
+118045e0  LCDStringDraw                  
+11803c0c  LCD_WR_DATA                    
+11803bf0  LCD_WR_DATA8                   
+11803c40  LCD_WR_REG                     
+1180848c  SoftSPIInit                    
+118083b4  SoftSPIWrite                   
+1180802c  SysDelayTimerSetup             
+11808158  SysIsTimerElapsed              
+118080e0  SysStartTimer                  
+11808138  SysStopTimer                   
+11808054  Sysdelay                       
+11804f98  TimerCaptureConfigure          
+11804d64  TimerCaptureGet                
+11805144  TimerClockModeSet              
+11804dc0  TimerCompareGet                
+11804d94  TimerCompareSet                
+11804b18  TimerConfigure                 
+11804cc4  TimerCounterGet                
+11804c84  TimerCounterSet                
+11804ae0  TimerDisable                   
+11804f80  TimerDivDwnRatio34Get          
+11804f20  TimerDivDwnRatio34Set          
+11804a80  TimerEnable                    
+118050ac  TimerInputGateDisable          
+11805070  TimerInputGateEnable           
+11804e0c  TimerIntDisable                
+11804de0  TimerIntEnable                 
+11804e68  TimerIntStatusClear            
+11804e40  TimerIntStatusGet              
+11805228  TimerInvertINDisable           
+118051ec  TimerInvertINEnable            
+11805298  TimerInvertOUTDisable          
+11805260  TimerInvertOUTEnable           
+118051b8  TimerOUTStatusGet              
+11804c50  TimerPeriodGet                 
+11804c14  TimerPeriodSet                 
+11804f00  TimerPreScalarCount34Get       
+11804ea8  TimerPreScalarCount34Set       
+11805180  TimerPulseModeSet              
+118050e8  TimerPulseWidthSet             
+11805034  TimerReadResetDisable          
+11804ff8  TimerReadResetEnable           
+11804d30  TimerReloadGet                 
+11804cf4  TimerReloadSet                 
+11804b88  TimerWatchdogActivate          
+11804bc8  TimerWatchdogReactivate        
+11810ff8  __TI_CINIT_Base                
+11811010  __TI_CINIT_Limit               
+11810fec  __TI_Handler_Table_Base        
+11810ff4  __TI_Handler_Table_Limit       
+11810c20  __TI_STACK_END                 
+00001000  __TI_STACK_SIZE                
+1180fc1c  __TI_STATIC_BASE               
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+11808b60  __TI_auto_init_nobinit_nopinit 
+11810ee0  __TI_cleanup_ptr               
+118094a0  __TI_decompress_none           
+118094c0  __TI_decompress_rle24          
+11810ee4  __TI_dtors_ptr                 
+11810ee8  __TI_enable_exit_profile_output
+11809220  __TI_frcmpyd_div               
+118088c0  __TI_ltoa                      
+ffffffff  __TI_pprof_out_hndl            
+11800000  __TI_printfi                   
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+11808da0  __TI_tls_init                  
+ffffffff  __binit__                      
+11805940  __c6xabi_divd                  
+11808c20  __c6xabi_divu                  
+11807880  __c6xabi_divul                 
+11807420  __c6xabi_divull                
+118093a0  __c6xabi_errno_addr            
+11809260  __c6xabi_isinf                 
+11808fa0  __c6xabi_llshl                 
+118090a0  __c6xabi_llshru                
+118093c0  __c6xabi_pop_rts               
+118093e0  __c6xabi_push_rts              
+11808ce0  __c6xabi_remi                  
+ffffffff  __c_args__                     
+11808c20  __divu                         
+11810eec  __errno                        
+118093c0  __pop_rts                      
+118093e0  __push_rts                     
+11808ce0  __remi                         
+118092e0  _args_main                     
+118030b8  _c674x_mask_int10_isr          
+11803280  _c674x_mask_int11_isr          
+11803444  _c674x_mask_int12_isr          
+11803608  _c674x_mask_int13_isr          
+118037d0  _c674x_mask_int14_isr          
+11803998  _c674x_mask_int15_isr          
+11802610  _c674x_mask_int4_isr           
+118027d8  _c674x_mask_int5_isr           
+118029a0  _c674x_mask_int6_isr           
+11802b64  _c674x_mask_int7_isr           
+11802d28  _c674x_mask_int8_isr           
+11802ef0  _c674x_mask_int9_isr           
+118020c0  _c674x_nmi_isr                 
+11802284  _c674x_rsvd_int2_isr           
+11802448  _c674x_rsvd_int3_isr           
+11809020  _c_int00                       
+1180fad8  _ctypes_                       
+11807c00  _intcVectorTable               
+11809420  _signbit                       
+1180fc20  _stack                         
+11809100  _subcull                       
+11809440  _system_post_cinit             
+11809460  _system_pre_init               
+11809480  abort                          
+118087c0  atoi                           
+ffffffff  binit                          
+11803bd8  delay_ms                       
+11810eec  errno                          
+118089a0  exit                           
+11807a40  frexp                          
+11807a40  frexpl                         
+118094e0  gImage_Rabbit                  
+11807e00  ldexp                          
+11807e00  ldexpl                         
+11808190  main                           
+11809160  memccpy                        
+11808f00  memcpy                         
+11808a80  memset                         
+11807e00  scalbn                         
+11807e00  scalbnl                        
+118091c0  sprintf                        
+11809360  wcslen                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00001000  __TI_STACK_SIZE                
+11800000  __TI_printfi                   
+118020c0  _c674x_nmi_isr                 
+11802284  _c674x_rsvd_int2_isr           
+11802448  _c674x_rsvd_int3_isr           
+11802610  _c674x_mask_int4_isr           
+118027d8  _c674x_mask_int5_isr           
+118029a0  _c674x_mask_int6_isr           
+11802b64  _c674x_mask_int7_isr           
+11802d28  _c674x_mask_int8_isr           
+11802ef0  _c674x_mask_int9_isr           
+118030b8  _c674x_mask_int10_isr          
+11803280  _c674x_mask_int11_isr          
+11803444  _c674x_mask_int12_isr          
+11803608  _c674x_mask_int13_isr          
+118037d0  _c674x_mask_int14_isr          
+11803998  _c674x_mask_int15_isr          
+11803bd8  delay_ms                       
+11803bf0  LCD_WR_DATA8                   
+11803c0c  LCD_WR_DATA                    
+11803c40  LCD_WR_REG                     
+11803c80  LCDAddressSet                  
+11803cd0  LCDFill                        
+11803d58  LCDPointDraw                   
+11803d80  LCDLineDraw                    
+11803ec4  LCDRectangleDraw               
+11803f24  LCDCircleDraw                  
+11804068  LCDChineseDraw                 
+1180430c  LCDCharDraw                    
+118045e0  LCDStringDraw                  
+1180466c  LCDPictureDraw                 
+11804744  LCDInit                        
+11804a80  TimerEnable                    
+11804ae0  TimerDisable                   
+11804b18  TimerConfigure                 
+11804b88  TimerWatchdogActivate          
+11804bc8  TimerWatchdogReactivate        
+11804c14  TimerPeriodSet                 
+11804c50  TimerPeriodGet                 
+11804c84  TimerCounterSet                
+11804cc4  TimerCounterGet                
+11804cf4  TimerReloadSet                 
+11804d30  TimerReloadGet                 
+11804d64  TimerCaptureGet                
+11804d94  TimerCompareSet                
+11804dc0  TimerCompareGet                
+11804de0  TimerIntEnable                 
+11804e0c  TimerIntDisable                
+11804e40  TimerIntStatusGet              
+11804e68  TimerIntStatusClear            
+11804ea8  TimerPreScalarCount34Set       
+11804f00  TimerPreScalarCount34Get       
+11804f20  TimerDivDwnRatio34Set          
+11804f80  TimerDivDwnRatio34Get          
+11804f98  TimerCaptureConfigure          
+11804ff8  TimerReadResetEnable           
+11805034  TimerReadResetDisable          
+11805070  TimerInputGateEnable           
+118050ac  TimerInputGateDisable          
+118050e8  TimerPulseWidthSet             
+11805144  TimerClockModeSet              
+11805180  TimerPulseModeSet              
+118051b8  TimerOUTStatusGet              
+118051ec  TimerInvertINEnable            
+11805228  TimerInvertINDisable           
+11805260  TimerInvertOUTEnable           
+11805298  TimerInvertOUTDisable          
+11805940  __c6xabi_divd                  
+11805f40  IntDSPINTCInit                 
+11805fb0  IntRegister                    
+11805fd4  IntUnRegister                  
+11805ffc  IntEventMap                    
+11806084  IntEventSet                    
+118060b8  IntEventClear                  
+118060f0  IntEventCombineInit            
+118061f4  IntEventCombineAdd             
+11806248  IntEventCombineRemove          
+11806298  IntEventCombineRegister        
+118062c0  IntEnable                      
+118062f0  IntDisable                     
+11806324  IntReset                       
+11806338  IntGlobalEnable                
+1180634c  IntGlobalDisable               
+11806360  IntGlobalRestore               
+11806378  ExcGlobalEnable                
+11806398  ExcCombineAdd                  
+118063e0  ExcCombineRemove               
+11806520  GPIODirModeSet                 
+118065c0  GPIODirModeGet                 
+11806624  GPIOPinWrite                   
+118066a8  GPIOPinRead                    
+1180670c  GPIOIntTypeSet                 
+11806880  GPIOIntTypeGet                 
+11806910  GPIOPinIntStatus               
+11806978  GPIOPinIntClear                
+118069c8  GPIOBankIntEnable              
+118069f4  GPIOBankIntDisable             
+11806a24  GPIOBankPinsWrite              
+11807420  __c6xabi_divull                
+11807880  __c6xabi_divul                 
+11807a40  frexp                          
+11807a40  frexpl                         
+11807c00  _intcVectorTable               
+11807e00  ldexp                          
+11807e00  ldexpl                         
+11807e00  scalbn                         
+11807e00  scalbnl                        
+1180802c  SysDelayTimerSetup             
+11808054  Sysdelay                       
+118080e0  SysStartTimer                  
+11808138  SysStopTimer                   
+11808158  SysIsTimerElapsed              
+11808180  InterruptInit                  
+11808190  main                           
+118083b4  SoftSPIWrite                   
+1180848c  SoftSPIInit                    
+118087c0  atoi                           
+118088c0  __TI_ltoa                      
+118089a0  exit                           
+11808a80  memset                         
+11808b60  __TI_auto_init_nobinit_nopinit 
+11808c20  __c6xabi_divu                  
+11808c20  __divu                         
+11808ce0  __c6xabi_remi                  
+11808ce0  __remi                         
+11808da0  __TI_tls_init                  
+11808f00  memcpy                         
+11808fa0  __c6xabi_llshl                 
+11809020  _c_int00                       
+118090a0  __c6xabi_llshru                
+11809100  _subcull                       
+11809160  memccpy                        
+118091c0  sprintf                        
+11809220  __TI_frcmpyd_div               
+11809260  __c6xabi_isinf                 
+118092e0  _args_main                     
+11809360  wcslen                         
+118093a0  __c6xabi_errno_addr            
+118093c0  __c6xabi_pop_rts               
+118093c0  __pop_rts                      
+118093e0  __c6xabi_push_rts              
+118093e0  __push_rts                     
+11809420  _signbit                       
+11809440  _system_post_cinit             
+11809460  _system_pre_init               
+11809480  C$$EXIT                        
+11809480  abort                          
+118094a0  __TI_decompress_none           
+118094c0  __TI_decompress_rle24          
+118094e0  gImage_Rabbit                  
+1180c6e0  ASCII32                        
+1180dea0  ASCII24                        
+1180f070  ASCII16                        
+1180f660  ASCII12                        
+1180fad8  _ctypes_                       
+1180fc1c  __TI_STATIC_BASE               
+1180fc20  _stack                         
+11810c20  __TI_STACK_END                 
+11810e60  FONT16                         
+11810ee0  __TI_cleanup_ptr               
+11810ee4  __TI_dtors_ptr                 
+11810ee8  __TI_enable_exit_profile_output
+11810eec  __errno                        
+11810eec  errno                          
+11810ef0  FontIndex                      
+11810fec  __TI_Handler_Table_Base        
+11810ff4  __TI_Handler_Table_Limit       
+11810ff8  __TI_CINIT_Base                
+11811010  __TI_CINIT_Limit               
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   __TI_TLS_INIT_Base             
+UNDEFED   __TI_TLS_INIT_Limit            
+
+[177 symbols]
