@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.3.12                     
 ******************************************************************************
->> Linked Thu May 19 20:23:44 2022
+>> Linked Thu May 19 20:28:33 2022
 
 OUTPUT FILE NAME:   <PS2.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 118076e0
@@ -11,7 +11,7 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  DSPL2RAM              11800000   00040000  0000a536  00035aca  RWIX
+  DSPL2RAM              11800000   00040000  0000a532  00035ace  RWIX
   SHRAM                 80000000   00020000  00000000  00020000  RWIX
   DDR2                  c0000000   08000000  00000000  08000000  RWIX
 
@@ -26,14 +26,14 @@ run origin  load origin   length   init length attrs members
   11807ce0    11807ce0    00001000   00000000    rw- .stack
   11808ce0    11808ce0    00001000   00000000    rw- .sysmem
   11809ce0    11809ce0    0000034a   00000000    rw- .fardata
-1180a030    1180a030    0000019c   0000019c    r--
-  1180a030    1180a030    0000019c   0000019c    r-- .const
-1180a1d0    1180a1d0    00000268   00000000    rw-
-  1180a1d0    1180a1d0    00000148   00000000    rw- .far
-  1180a318    1180a318    00000120   00000000    rw- .cio
-1180a438    1180a438    00000108   00000108    r--
-  1180a438    1180a438    00000048   00000048    r-- .switch
-  1180a480    1180a480    000000c0   000000c0    r-- .cinit
+1180a030    1180a030    00000198   00000198    r--
+  1180a030    1180a030    00000198   00000198    r-- .const
+1180a1c8    1180a1c8    00000268   00000000    rw-
+  1180a1c8    1180a1c8    00000148   00000000    rw- .far
+  1180a310    1180a310    00000120   00000000    rw- .cio
+1180a430    1180a430    00000108   00000108    r--
+  1180a430    1180a430    00000048   00000048    r-- .switch
+  1180a478    1180a478    000000c0   000000c0    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -124,30 +124,30 @@ section   page    origin      length       input sections
                   11807ce0    00000008     rts6740_elf.lib : boot.c.obj (.stack)
                   11807ce8    00000ff8     --HOLE--
 
-.cio       0    1180a318    00000120     UNINITIALIZED
-                  1180a318    00000120     rts6740_elf.lib : trgmsg.c.obj (.cio)
+.cio       0    1180a310    00000120     UNINITIALIZED
+                  1180a310    00000120     rts6740_elf.lib : trgmsg.c.obj (.cio)
 
-.const     0    1180a030    0000019c     
+.const     0    1180a030    00000198     
                   1180a030    00000101     rts6740_elf.lib : ctype.c.obj (.const:.string:_ctypes_)
                   1180a131    00000003     --HOLE-- [fill = 0]
-                  1180a134    00000074     main.obj (.const:.string)
-                  1180a1a8    00000024     rts6740_elf.lib : _printfi.c.obj (.const:.string)
+                  1180a134    00000070     main.obj (.const:.string)
+                  1180a1a4    00000024     rts6740_elf.lib : _printfi.c.obj (.const:.string)
 
 .sysmem    0    11808ce0    00001000     UNINITIALIZED
                   11808ce0    00000008     rts6740_elf.lib : memory.c.obj (.sysmem)
                   11808ce8    00000ff8     --HOLE--
 
-.switch    0    1180a438    00000048     
-                  1180a438    00000038     rts6740_elf.lib : _printfi.c.obj (.switch:__TI_printfi)
-                  1180a470    00000010     drivers.lib : gpio.obj (.switch:GPIOIntTypeSet)
+.switch    0    1180a430    00000048     
+                  1180a430    00000038     rts6740_elf.lib : _printfi.c.obj (.switch:__TI_printfi)
+                  1180a468    00000010     drivers.lib : gpio.obj (.switch:GPIOIntTypeSet)
 
-.cinit     0    1180a480    000000c0     
-                  1180a480    00000096     (.cinit..fardata.load) [load image, compression = rle]
-                  1180a516    0000000b     (.cinit..far.load) [load image, compression = rle]
-                  1180a521    00000003     --HOLE-- [fill = 0]
-                  1180a524    00000008     (__TI_handler_table)
-                  1180a52c    00000004     --HOLE-- [fill = 0]
-                  1180a530    00000010     (__TI_cinit_table)
+.cinit     0    1180a478    000000c0     
+                  1180a478    00000096     (.cinit..fardata.load) [load image, compression = rle]
+                  1180a50e    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  1180a519    00000003     --HOLE-- [fill = 0]
+                  1180a51c    00000008     (__TI_handler_table)
+                  1180a524    00000004     --HOLE-- [fill = 0]
+                  1180a528    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    11800000    00000000     UNINITIALIZED
@@ -167,9 +167,9 @@ section   page    origin      length       input sections
                   1180a024    00000004                     : errno.c.obj (.fardata)
                   1180a028    00000002     PS2.obj (.fardata:CMD)
 
-.far       0    1180a1d0    00000148     UNINITIALIZED
-                  1180a1d0    00000140     (.common:__TI_tmpnams)
-                  1180a310    00000008     (.common:parmbuf)
+.far       0    1180a1c8    00000148     UNINITIALIZED
+                  1180a1c8    00000140     (.common:__TI_tmpnams)
+                  1180a308    00000008     (.common:parmbuf)
 
 MODULE SUMMARY
 
@@ -177,10 +177,10 @@ MODULE SUMMARY
        ------                       ----    -------   -------
     .\
        PS2.obj                      1664    0         43     
-       main.obj                     480     116       0      
+       main.obj                     480     112       0      
        SoftSPI.obj                  576     0         0      
     +--+----------------------------+-------+---------+---------+
-       Total:                       2720    116       43     
+       Total:                       2720    112       43     
                                                              
     ../../Library/StarterWare/Drivers/Debug/drivers.lib
        gpio.obj                     1472    16        0      
@@ -249,19 +249,19 @@ MODULE SUMMARY
        Stack:                       0       0         4096   
        Linker Generated:            0       185       0      
     +--+----------------------------+-------+---------+---------+
-       Grand Total:                 31968   666       9647   
+       Grand Total:                 31968   662       9647   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 1180a530 records: 2, size/record: 8, table size: 16
-	.fardata: load addr=1180a480, load size=00000096 bytes, run addr=11809ce0, run size=0000034a bytes, compression=rle
-	.far: load addr=1180a516, load size=0000000b bytes, run addr=1180a1d0, run size=00000148 bytes, compression=rle
+__TI_cinit_table @ 1180a528 records: 2, size/record: 8, table size: 16
+	.fardata: load addr=1180a478, load size=00000096 bytes, run addr=11809ce0, run size=0000034a bytes, compression=rle
+	.far: load addr=1180a50e, load size=0000000b bytes, run addr=1180a1c8, run size=00000148 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 1180a524 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 1180a51c records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 
@@ -306,11 +306,11 @@ address   name
 1180250c  PS2VibrationModeEnable         
 11804db8  SoftSPIInit                    
 11804c94  SoftSPIReadWrite               
-1180a318  __CIOBUF_                      
-1180a530  __TI_CINIT_Base                
-1180a540  __TI_CINIT_Limit               
-1180a524  __TI_Handler_Table_Base        
-1180a52c  __TI_Handler_Table_Limit       
+1180a310  __CIOBUF_                      
+1180a528  __TI_CINIT_Base                
+1180a538  __TI_CINIT_Limit               
+1180a51c  __TI_Handler_Table_Base        
+1180a524  __TI_Handler_Table_Limit       
 11808ce0  __TI_STACK_END                 
 00001000  __TI_STACK_SIZE                
 00000000  __TI_STATIC_BASE               
@@ -335,7 +335,7 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start           
 118075e0  __TI_readmsg                   
 118070c0  __TI_tls_init                  
-1180a1d0  __TI_tmpnams                   
+1180a1c8  __TI_tmpnams                   
 118077e0  __TI_writemsg                  
 118068a0  __TI_wrt_ok                    
 ffffffff  __binit__                      
@@ -391,7 +391,7 @@ ffffffff  binit
 11807960  memccpy                        
 118074a0  memcpy                         
 11806b40  memset                         
-1180a310  parmbuf                        
+1180a308  parmbuf                        
 11806c20  printf                         
 11805380  putc                           
 11807760  remove                         
@@ -523,13 +523,13 @@ address   name
 1180a024  errno                          
 1180a028  CMD                            
 1180a030  _ctypes_                       
-1180a1d0  __TI_tmpnams                   
-1180a310  parmbuf                        
-1180a318  __CIOBUF_                      
-1180a524  __TI_Handler_Table_Base        
-1180a52c  __TI_Handler_Table_Limit       
-1180a530  __TI_CINIT_Base                
-1180a540  __TI_CINIT_Limit               
+1180a1c8  __TI_tmpnams                   
+1180a308  parmbuf                        
+1180a310  __CIOBUF_                      
+1180a51c  __TI_Handler_Table_Base        
+1180a524  __TI_Handler_Table_Limit       
+1180a528  __TI_CINIT_Base                
+1180a538  __TI_CINIT_Limit               
 ffffffff  __TI_pprof_out_hndl            
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           

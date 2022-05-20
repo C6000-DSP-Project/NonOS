@@ -54,7 +54,7 @@ void main()
     {
         // 获取键值
         key = PS2KEYData();
-        printf("PS2 %s KEY PRESSED %5d %5d %5d %5d.\r\n", PS2KEYStr[key], PS2AnologData(PSS_LX), PS2AnologData(PSS_LY), PS2AnologData(PSS_RX), PS2AnologData(PSS_RY));
+        printf("PS2 %s KEY PRESSED %5d %5d %5d %5d\r\n", PS2KEYStr[key], PS2AnologData(PSS_LX), PS2AnologData(PSS_LY), PS2AnologData(PSS_RX), PS2AnologData(PSS_RY));
 
         // 震动
         if(key == PSB_L1)
